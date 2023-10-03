@@ -70,7 +70,7 @@ all: main-build
 main-build: SDCC_SCR_TC375_Aurix.elf secondary-outputs
 
 dependents:
-	-cd C:/Users/La/Desktop/TC375_Eval_board/SDCC_SCR_TC375_Aurix/SDCC_SCR_TC375_Aurix/SCR\ Debug\ (SDCC) && $(MAKE) all
+	-cd C:/Users/La/Desktop/TC375_Eval_board/SDCC_SCR_TC375_Aurix/SDCC_SCR_TC375_Aurix/SCR\ Debug\ (SDCC) && $(MAKE) clean all
 
 # Tool invocations
 SDCC_SCR_TC375_Aurix.elf: $(OBJS) C:/Users/La/Desktop/TC375_Eval_board/SDCC_SCR_TC375_Aurix/SDCC_SCR_TC375_Aurix/SCR\ Debug\ (SDCC)/scr_a2g makefile $(OPTIONAL_TOOL_DEPS)

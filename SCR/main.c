@@ -25,13 +25,14 @@
  * IN THE SOFTWARE.
  *********************************************************************************************************************/
 #include "registers.h"
+#include "scr_header_files.h"
 
 
 volatile unsigned int var_1;
 
 void delay(void);
 void gpoi_init(void);
-void scr_rtcInit(void);
+
 
 void main()
 {
@@ -50,6 +51,7 @@ void main()
 
     gpoi_init();
     scr_rtcInit();
+    scr_adc_init();
 
 
 
@@ -97,19 +99,7 @@ void gpoi_init(void){
 /************************************************************************************************
  *
  *************************************************************************************************/
-void scr_rtcInit(void){
 
-
-/* RTC module configurations*/
-    //1s@100Mhz/DIV, we use high speed because 70khz has 30% variation
-    SCR_RTC_CR0 = 0xFF;
-    SCR_RTC_CR1 = 0xFF;
-    SCR_RTC_CR2 = 0xFF;
-    SCR_RTC_CR3 = 0x01;
-//   RMAP: 0, PAGE: X
-    SCR_RTC_CON =  0x17;        // RTC Interrupt Enable, RTC start operation, RTC 100MHz/DIV -> 20MHz 9-bit prescaler is bypassed
-
-}
 /*************************************************************************/
 /* RTC ISR to blink a LED */
 void rtc_interrupt(void) __interrupt (13){

@@ -24,6 +24,8 @@
  * CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS 
  * IN THE SOFTWARE.
  *********************************************************************************************************************/
+#include "PMS_Power_Down_Standby.h"
+#include "IfxPms_reg.h"
 #include "Ifx_Types.h"
 #include "IfxCpu.h"
 #include "IfxScuWdt.h"
@@ -35,6 +37,7 @@ void core0_main(void)
 {
     IfxCpu_enableInterrupts();
     
+
     /* !!WATCHDOG0 AND SAFETY WATCHDOG ARE DISABLED HERE!!
      * Enable the watchdogs and service them periodically if it is required
      */
@@ -66,6 +69,12 @@ void core0_main(void)
         while (P34_PCSR.B.LCK);
         P34_PCSR.U = 0x0002;
         IfxScuWdt_setSafetyEndinit(IfxScuWdt_getCpuWatchdogPassword());
+
+        SCU_PMSWCR1.B.STBYEV = 1;
+        /* Configure the LEDs and put the system into Standby after a few seconds */
+         //   initLEDs();
+         //   runStandby();
+        stepIntoStandbyMode();
 
     while(1)
     {

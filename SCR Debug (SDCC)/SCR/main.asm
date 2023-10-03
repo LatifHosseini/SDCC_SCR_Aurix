@@ -12,10 +12,11 @@
 ;--------------------------------------------------------
 	.globl	_rtc_interrupt
 	.globl	_main
+	.globl	_scr_adc_init
+	.globl	_scr_rtcInit
 	.globl	_var_1
 	.globl	_delay
 	.globl	_gpoi_init
-	.globl	_scr_rtcInit
 ;--------------------------------------------------------
 ; special function registers
 ;--------------------------------------------------------
@@ -219,7 +220,7 @@ _var_1:
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'main'
 ;------------------------------------------------------------
-;	../SCR/main.c:36: void main()
+;	../SCR/main.c:37: void main()
 ;	-----------------------------------------
 ;	 function main
 ;	-----------------------------------------
@@ -227,37 +228,39 @@ _var_1:
 	.type   main, @function
 _main:
 	.using 0
-;	../SCR/main.c:41: SCR_SCU_PAGE = 1;       //Switch to page 1
+;	../SCR/main.c:42: SCR_SCU_PAGE = 1;       //Switch to page 1
 	mov	_SCR_SCU_PAGE,#0x01
-;	../SCR/main.c:42: SCR_SCU_PMCON1 = 0x59;  //OCDS, T2CCU0, RTC and WCAN enabled
+;	../SCR/main.c:43: SCR_SCU_PMCON1 = 0x59;  //OCDS, T2CCU0, RTC and WCAN enabled
 	mov	_SCR_SCU_PMCON1,#0x59
-;	../SCR/main.c:44: SCR_SCU_PAGE = 0;       //Switch to page 0
+;	../SCR/main.c:45: SCR_SCU_PAGE = 0;       //Switch to page 0
 	mov	_SCR_SCU_PAGE,#0x00
-;	../SCR/main.c:45: SCR_SCRINTEXCHG = 0xA0;
+;	../SCR/main.c:46: SCR_SCRINTEXCHG = 0xA0;
 	mov	_SCR_SCRINTEXCHG,#0xA0
-;	../SCR/main.c:46: SCR_SCU_PAGE = 1;       //Switch to page 0
+;	../SCR/main.c:47: SCR_SCU_PAGE = 1;       //Switch to page 0
 	mov	_SCR_SCU_PAGE,#0x01
-;	../SCR/main.c:48: SCR_IEN0 |= (1 << 7) ; // enable global interrupt Set bit 7
+;	../SCR/main.c:49: SCR_IEN0 |= (1 << 7) ; // enable global interrupt Set bit 7
 	orl	_SCR_IEN0,#0x80
-;	../SCR/main.c:49: SCR_IEN1 |= (1 << 7) ; // enable node 13 interrupt
+;	../SCR/main.c:50: SCR_IEN1 |= (1 << 7) ; // enable node 13 interrupt
 	orl	_SCR_IEN1,#0x80
-;	../SCR/main.c:51: gpoi_init();
+;	../SCR/main.c:52: gpoi_init();
 	lcall	_gpoi_init
-;	../SCR/main.c:52: scr_rtcInit();
+;	../SCR/main.c:53: scr_rtcInit();
 	lcall	_scr_rtcInit
-;	../SCR/main.c:56: while(1){
+;	../SCR/main.c:54: scr_adc_init();
+	lcall	_scr_adc_init
+;	../SCR/main.c:58: while(1){
 .00102:
 	sjmp	.00102
 .00104:
-;	../SCR/main.c:62: }
+;	../SCR/main.c:64: }
 	ret
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'delay'
 ;------------------------------------------------------------
-;i                         Allocated with name '_delay_i_65536_7'
-;j                         Allocated with name '_delay_j_65536_7'
+;i                         Allocated with name '_delay_i_65536_17'
+;j                         Allocated with name '_delay_j_65536_17'
 ;------------------------------------------------------------
-;	../SCR/main.c:66: void delay(void){
+;	../SCR/main.c:68: void delay(void){
 ;	-----------------------------------------
 ;	 function delay
 ;	-----------------------------------------
@@ -265,10 +268,10 @@ _main:
 	.type   delay, @function
 _delay:
 	.using 0
-;	../SCR/main.c:70: for( i = 0; i < 1000; i++){
+;	../SCR/main.c:72: for( i = 0; i < 1000; i++){
 	mov	r6,#0x00
 	mov	r7,#0x00
-;	../SCR/main.c:71: for(j = 0; j< 1000; j++){
+;	../SCR/main.c:73: for(j = 0; j< 1000; j++){
 .00119:
 	mov	r4,#0xE8
 	mov	r5,#0x03
@@ -281,7 +284,7 @@ _delay:
 	orl	a,r5
 	jnz	.00114
 .00134:
-;	../SCR/main.c:70: for( i = 0; i < 1000; i++){
+;	../SCR/main.c:72: for( i = 0; i < 1000; i++){
 	inc	r6
 	cjne	r6,#0x00,.00135
 	inc	r7
@@ -295,12 +298,12 @@ _delay:
 	jc	.00119
 .00136:
 .00117:
-;	../SCR/main.c:76: }
+;	../SCR/main.c:78: }
 	ret
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'gpoi_init'
 ;------------------------------------------------------------
-;	../SCR/main.c:80: void gpoi_init(void){
+;	../SCR/main.c:82: void gpoi_init(void){
 ;	-----------------------------------------
 ;	 function gpoi_init
 ;	-----------------------------------------
@@ -308,59 +311,35 @@ _delay:
 	.type   gpoi_init, @function
 _gpoi_init:
 	.using 0
-;	../SCR/main.c:83: SCR_IO_PAGE = 2;        //Switch to page 2
+;	../SCR/main.c:85: SCR_IO_PAGE = 2;        //Switch to page 2
 	mov	_SCR_IO_PAGE,#0x02
-;	../SCR/main.c:84: SCR_P00_PDISC = 0x00;
+;	../SCR/main.c:86: SCR_P00_PDISC = 0x00;
 	mov	_SCR_P00_PDISC,#0x00
-;	../SCR/main.c:85: SCR_P01_PDISC = 0x00;
+;	../SCR/main.c:87: SCR_P01_PDISC = 0x00;
 	mov	_SCR_P01_PDISC,#0x00
-;	../SCR/main.c:87: SCR_IO_PAGE = 1;        //Switch to page 1
+;	../SCR/main.c:89: SCR_IO_PAGE = 1;        //Switch to page 1
 	mov	_SCR_IO_PAGE,#0x01
-;	../SCR/main.c:88: SCR_P00_IOCR0 = 0x80;
+;	../SCR/main.c:90: SCR_P00_IOCR0 = 0x80;
 	mov	_SCR_P00_IOCR0,#0x80
-;	../SCR/main.c:89: SCR_P00_IOCR1 = 0x80;
+;	../SCR/main.c:91: SCR_P00_IOCR1 = 0x80;
 	mov	_SCR_P00_IOCR1,#0x80
-;	../SCR/main.c:90: SCR_P00_IOCR2 = 0x80;
+;	../SCR/main.c:92: SCR_P00_IOCR2 = 0x80;
 	mov	_SCR_P00_IOCR2,#0x80
-;	../SCR/main.c:91: SCR_P00_IOCR3 = 0x80;
+;	../SCR/main.c:93: SCR_P00_IOCR3 = 0x80;
 	mov	_SCR_P00_IOCR3,#0x80
-;	../SCR/main.c:92: SCR_P00_IOCR4 = 0x80;
+;	../SCR/main.c:94: SCR_P00_IOCR4 = 0x80;
 	mov	_SCR_P00_IOCR4,#0x80
-;	../SCR/main.c:93: SCR_P00_IOCR5 = 0x80;
+;	../SCR/main.c:95: SCR_P00_IOCR5 = 0x80;
 	mov	_SCR_P00_IOCR5,#0x80
-;	../SCR/main.c:94: SCR_P00_IOCR6 = 0x80;
+;	../SCR/main.c:96: SCR_P00_IOCR6 = 0x80;
 	mov	_SCR_P00_IOCR6,#0x80
 .00137:
-;	../SCR/main.c:96: }
-	ret
-;------------------------------------------------------------
-;Allocation info for local variables in function 'scr_rtcInit'
-;------------------------------------------------------------
-;	../SCR/main.c:100: void scr_rtcInit(void){
-;	-----------------------------------------
-;	 function scr_rtcInit
-;	-----------------------------------------
-	.section .text.code.scr_rtcInit,"ax" ;code for function scr_rtcInit
-	.type   scr_rtcInit, @function
-_scr_rtcInit:
-	.using 0
-;	../SCR/main.c:105: SCR_RTC_CR0 = 0xFF;
-	mov	_SCR_RTC_CR0,#0xFF
-;	../SCR/main.c:106: SCR_RTC_CR1 = 0xFF;
-	mov	_SCR_RTC_CR1,#0xFF
-;	../SCR/main.c:107: SCR_RTC_CR2 = 0xFF;
-	mov	_SCR_RTC_CR2,#0xFF
-;	../SCR/main.c:108: SCR_RTC_CR3 = 0x01;
-	mov	_SCR_RTC_CR3,#0x01
-;	../SCR/main.c:110: SCR_RTC_CON =  0x17;        // RTC Interrupt Enable, RTC start operation, RTC 100MHz/DIV -> 20MHz 9-bit prescaler is bypassed
-	mov	_SCR_RTC_CON,#0x17
-.00139:
-;	../SCR/main.c:112: }
+;	../SCR/main.c:98: }
 	ret
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'rtc_interrupt'
 ;------------------------------------------------------------
-;	../SCR/main.c:115: void rtc_interrupt(void) __interrupt (13){
+;	../SCR/main.c:105: void rtc_interrupt(void) __interrupt (13){
 ;	-----------------------------------------
 ;	 function rtc_interrupt
 ;	-----------------------------------------
@@ -375,7 +354,7 @@ _rtc_interrupt:
 	push	ar6
 	push	psw
 	mov	psw,#0x00
-;	../SCR/main.c:116: var_1++;
+;	../SCR/main.c:106: var_1++;
 	mov	dptr,#_var_1
 	movx	a,@dptr
 	mov	r6,a
@@ -390,53 +369,53 @@ _rtc_interrupt:
 	addc	a,r7
 	inc	dptr
 	movx	@dptr,a
-;	../SCR/main.c:117: SCR_IO_PAGE = 0;
+;	../SCR/main.c:107: SCR_IO_PAGE = 0;
 	mov	_SCR_IO_PAGE,#0x00
-;	../SCR/main.c:118: if(var_1 == 1){
+;	../SCR/main.c:108: if(var_1 == 1){
 	mov	dptr,#_var_1
 	movx	a,@dptr
 	mov	r6,a
 	inc	dptr
 	movx	a,@dptr
 	mov	r7,a
-	cjne	r6,#0x01,.00157
+	cjne	r6,#0x01,.00155
+	cjne	r7,#0x00,.00155
+	sjmp	.00156
+.00155:
+	sjmp	.00143
+.00156:
+;	../SCR/main.c:109: SCR_P00_OUT |= (1 << 1) ; // Set bit 6
+	orl	_SCR_P00_OUT,#0x02
+	sjmp	.00144
+.00143:
+;	../SCR/main.c:111: else if (var_1 == 2){
+	mov	dptr,#_var_1
+	movx	a,@dptr
+	mov	r6,a
+	inc	dptr
+	movx	a,@dptr
+	mov	r7,a
+	cjne	r6,#0x02,.00157
 	cjne	r7,#0x00,.00157
 	sjmp	.00158
 .00157:
-	sjmp	.00145
+	sjmp	.00140
 .00158:
-;	../SCR/main.c:119: SCR_P00_OUT |= (1 << 1) ; // Set bit 6
-	orl	_SCR_P00_OUT,#0x02
-	sjmp	.00146
-.00145:
-;	../SCR/main.c:121: else if (var_1 == 2){
-	mov	dptr,#_var_1
-	movx	a,@dptr
-	mov	r6,a
-	inc	dptr
-	movx	a,@dptr
-	mov	r7,a
-	cjne	r6,#0x02,.00159
-	cjne	r7,#0x00,.00159
-	sjmp	.00160
-.00159:
-	sjmp	.00142
-.00160:
-;	../SCR/main.c:122: SCR_P00_OUT &= ~(1 << 1) ; // Clear bit 5
+;	../SCR/main.c:112: SCR_P00_OUT &= ~(1 << 1) ; // Clear bit 5
 	anl	_SCR_P00_OUT,#0xFD
-	sjmp	.00146
-.00142:
-;	../SCR/main.c:125: var_1 = 0;
+	sjmp	.00144
+.00140:
+;	../SCR/main.c:115: var_1 = 0;
 	mov	dptr,#_var_1
 	clr	a
 	movx	@dptr,a
 	inc	dptr
 	movx	@dptr,a
-.00146:
-;	../SCR/main.c:128: SCR_RTC_CON &= ~(1 << 6) ;// clear rtc Interrupt flag
+.00144:
+;	../SCR/main.c:118: SCR_RTC_CON &= ~(1 << 6) ;// clear rtc Interrupt flag
 	anl	_SCR_RTC_CON,#0xBF
-.00147:
-;	../SCR/main.c:130: }
+.00145:
+;	../SCR/main.c:120: }
 	pop	psw
 	pop	ar6
 	pop	ar7

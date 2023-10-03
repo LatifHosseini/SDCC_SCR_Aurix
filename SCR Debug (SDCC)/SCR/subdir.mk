@@ -4,10 +4,14 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
-../SCR/main.c 
+../SCR/main.c \
+../SCR/rtc_init.c \
+../SCR/scr_adc.c 
 
 OBJS += \
-./SCR/main.o 
+./SCR/main.o \
+./SCR/rtc_init.o \
+./SCR/scr_adc.o 
 
 
 # Each subdirectory must supply rules for building sources it contributes
@@ -22,7 +26,7 @@ SCR/%.o: ../SCR/%.c SCR/subdir.mk
 clean: clean-SCR
 
 clean-SCR:
-	-$(RM) ./SCR/main.o
+	-$(RM) ./SCR/main.o ./SCR/rtc_init.o ./SCR/scr_adc.o
 
 .PHONY: clean-SCR
 

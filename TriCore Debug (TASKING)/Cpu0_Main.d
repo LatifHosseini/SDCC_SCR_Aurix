@@ -1,5 +1,13 @@
 Cpu0_Main.o :	../Cpu0_Main.c
 ../Cpu0_Main.c :
+Cpu0_Main.o :	../PMS_Power_Down_Standby.h
+../PMS_Power_Down_Standby.h :
+Cpu0_Main.o :	c:/Users/La/Desktop/TC375_Eval_board/SDCC_SCR_TC375_Aurix/SDCC_SCR_TC375_Aurix/Libraries/Infra/Sfr/TC37A/_Reg/IfxPms_reg.h
+c:/Users/La/Desktop/TC375_Eval_board/SDCC_SCR_TC375_Aurix/SDCC_SCR_TC375_Aurix/Libraries/Infra/Sfr/TC37A/_Reg/IfxPms_reg.h :
+Cpu0_Main.o :	c:/Users/La/Desktop/TC375_Eval_board/SDCC_SCR_TC375_Aurix/SDCC_SCR_TC375_Aurix/Libraries/Infra/Sfr/TC37A/_Reg/IfxPms_regdef.h
+c:/Users/La/Desktop/TC375_Eval_board/SDCC_SCR_TC375_Aurix/SDCC_SCR_TC375_Aurix/Libraries/Infra/Sfr/TC37A/_Reg/IfxPms_regdef.h :
+Cpu0_Main.o :	c:/Users/La/Desktop/TC375_Eval_board/SDCC_SCR_TC375_Aurix/SDCC_SCR_TC375_Aurix/Libraries/Infra/Sfr/TC37A/_Reg/Ifx_TypesReg.h
+c:/Users/La/Desktop/TC375_Eval_board/SDCC_SCR_TC375_Aurix/SDCC_SCR_TC375_Aurix/Libraries/Infra/Sfr/TC37A/_Reg/Ifx_TypesReg.h :
 Cpu0_Main.o :	c:/Users/La/Desktop/TC375_Eval_board/SDCC_SCR_TC375_Aurix/SDCC_SCR_TC375_Aurix/Libraries/iLLD/TC37A/Tricore/Cpu/Std/Ifx_Types.h
 c:/Users/La/Desktop/TC375_Eval_board/SDCC_SCR_TC375_Aurix/SDCC_SCR_TC375_Aurix/Libraries/iLLD/TC37A/Tricore/Cpu/Std/Ifx_Types.h :
 Cpu0_Main.o :	c:/Users/La/Desktop/TC375_Eval_board/SDCC_SCR_TC375_Aurix/SDCC_SCR_TC375_Aurix/Libraries/Infra/Platform/Tricore/Compilers/Compilers.h
@@ -26,8 +34,6 @@ Cpu0_Main.o :	c:/Users/La/Desktop/TC375_Eval_board/SDCC_SCR_TC375_Aurix/SDCC_SCR
 c:/Users/La/Desktop/TC375_Eval_board/SDCC_SCR_TC375_Aurix/SDCC_SCR_TC375_Aurix/Libraries/Infra/Sfr/TC37A/_Reg/IfxCpu_reg.h :
 Cpu0_Main.o :	c:/Users/La/Desktop/TC375_Eval_board/SDCC_SCR_TC375_Aurix/SDCC_SCR_TC375_Aurix/Libraries/Infra/Sfr/TC37A/_Reg/IfxCpu_regdef.h
 c:/Users/La/Desktop/TC375_Eval_board/SDCC_SCR_TC375_Aurix/SDCC_SCR_TC375_Aurix/Libraries/Infra/Sfr/TC37A/_Reg/IfxCpu_regdef.h :
-Cpu0_Main.o :	c:/Users/La/Desktop/TC375_Eval_board/SDCC_SCR_TC375_Aurix/SDCC_SCR_TC375_Aurix/Libraries/Infra/Sfr/TC37A/_Reg/Ifx_TypesReg.h
-c:/Users/La/Desktop/TC375_Eval_board/SDCC_SCR_TC375_Aurix/SDCC_SCR_TC375_Aurix/Libraries/Infra/Sfr/TC37A/_Reg/Ifx_TypesReg.h :
 Cpu0_Main.o :	c:/Users/La/Desktop/TC375_Eval_board/SDCC_SCR_TC375_Aurix/SDCC_SCR_TC375_Aurix/Libraries/Infra/Sfr/TC37A/_Reg/IfxSrc_reg.h
 c:/Users/La/Desktop/TC375_Eval_board/SDCC_SCR_TC375_Aurix/SDCC_SCR_TC375_Aurix/Libraries/Infra/Sfr/TC37A/_Reg/IfxSrc_reg.h :
 Cpu0_Main.o :	c:/Users/La/Desktop/TC375_Eval_board/SDCC_SCR_TC375_Aurix/SDCC_SCR_TC375_Aurix/Libraries/Infra/Sfr/TC37A/_Reg/IfxSrc_regdef.h
@@ -78,7 +84,3 @@ Cpu0_Main.o :	c:/Users/La/Desktop/TC375_Eval_board/SDCC_SCR_TC375_Aurix/SDCC_SCR
 c:/Users/La/Desktop/TC375_Eval_board/SDCC_SCR_TC375_Aurix/SDCC_SCR_TC375_Aurix/Libraries/iLLD/TC37A/Tricore/Scu/Std/IfxScuWdt.h :
 Cpu0_Main.o :	../SCR.h
 ../SCR.h :
-Cpu0_Main.o :	c:/Users/La/Desktop/TC375_Eval_board/SDCC_SCR_TC375_Aurix/SDCC_SCR_TC375_Aurix/Libraries/Infra/Sfr/TC37A/_Reg/IfxPms_reg.h
-c:/Users/La/Desktop/TC375_Eval_board/SDCC_SCR_TC375_Aurix/SDCC_SCR_TC375_Aurix/Libraries/Infra/Sfr/TC37A/_Reg/IfxPms_reg.h :
-Cpu0_Main.o :	c:/Users/La/Desktop/TC375_Eval_board/SDCC_SCR_TC375_Aurix/SDCC_SCR_TC375_Aurix/Libraries/Infra/Sfr/TC37A/_Reg/IfxPms_regdef.h
-c:/Users/La/Desktop/TC375_Eval_board/SDCC_SCR_TC375_Aurix/SDCC_SCR_TC375_Aurix/Libraries/Infra/Sfr/TC37A/_Reg/IfxPms_regdef.h :
