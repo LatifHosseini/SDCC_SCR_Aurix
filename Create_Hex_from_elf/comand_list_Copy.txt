@@ -1,0 +1,9 @@
+thanks for the clarification. As NJAY mentioned objcopy -j .text -j .data -O ihex <input-file.elf> <output-file.hex> will do the job. Make sure you are running it in an elevated command prompt.
+
+
+objcopy -j .text -j .data -O ihex C:\Users\La\Desktop\TC375_Eval_board\Create_Hex_from_elf\input_elf\scr_a2g.elf C:\Users\La\Desktop\TC375_Eval_board\Create_Hex_from_elf\output_hex\output-file.hex
+
+
+
+
+

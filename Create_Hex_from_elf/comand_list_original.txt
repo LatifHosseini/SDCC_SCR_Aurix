@@ -1,0 +1,4 @@
+thanks for the clarification. As NJAY mentioned objcopy -j .text -j .data -O ihex <input-file.elf> <output-file.hex> will do the job. Make sure you are running it in an elevated command prompt.
+
+
+objcopy -j .text -j .data -O ihex <input-file.elf> <output-file.hex>
