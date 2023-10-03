@@ -1,6 +1,4 @@
 # SDCC_SCR_Aurix
-
-
  git add --all
  git commit -m 'First commit'
 git remote add origin git@github.com:LatifHosseini/SDCC_SCR_Aurix.git
