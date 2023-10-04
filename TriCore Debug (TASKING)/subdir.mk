@@ -9,8 +9,7 @@ C_SRCS += \
 ../Cpu2_Main.c \
 ../PMS_Power_Down_Standby.c \
 ../SCR.c \
-../scr_a2g.c \
-../test.c 
+../scr_a2g.c 
 
 COMPILED_SRCS += \
 ./Cpu0_Main.src \
@@ -18,8 +17,7 @@ COMPILED_SRCS += \
 ./Cpu2_Main.src \
 ./PMS_Power_Down_Standby.src \
 ./SCR.src \
-./scr_a2g.src \
-./test.src 
+./scr_a2g.src 
 
 C_DEPS += \
 ./Cpu0_Main.d \
@@ -27,8 +25,7 @@ C_DEPS += \
 ./Cpu2_Main.d \
 ./PMS_Power_Down_Standby.d \
 ./SCR.d \
-./scr_a2g.d \
-./test.d 
+./scr_a2g.d 
 
 OBJS += \
 ./Cpu0_Main.o \
@@ -36,8 +33,7 @@ OBJS += \
 ./Cpu2_Main.o \
 ./PMS_Power_Down_Standby.o \
 ./SCR.o \
-./scr_a2g.o \
-./test.o 
+./scr_a2g.o 
 
 
 # Each subdirectory must supply rules for building sources it contributes
@@ -91,18 +87,11 @@ scr_a2g.o: ./scr_a2g.src subdir.mk
 	@echo 'Finished building: $<'
 	@echo ' '
 
-test.o: ./test.src subdir.mk
-	@echo 'Building file: $<'
-	@echo 'Invoking: TASKING Assembler'
-	astc -Og -Os --no-warnings= --error-limit=42 -o  "$@" "$<"
-	@echo 'Finished building: $<'
-	@echo ' '
-
 
 clean: clean--2e-
 
 clean--2e-:
-	-$(RM) ./Cpu0_Main.d ./Cpu0_Main.o ./Cpu0_Main.src ./Cpu1_Main.d ./Cpu1_Main.o ./Cpu1_Main.src ./Cpu2_Main.d ./Cpu2_Main.o ./Cpu2_Main.src ./PMS_Power_Down_Standby.d ./PMS_Power_Down_Standby.o ./PMS_Power_Down_Standby.src ./SCR.d ./SCR.o ./SCR.src ./scr_a2g.d ./scr_a2g.o ./scr_a2g.src ./test.d ./test.o ./test.src
+	-$(RM) ./Cpu0_Main.d ./Cpu0_Main.o ./Cpu0_Main.src ./Cpu1_Main.d ./Cpu1_Main.o ./Cpu1_Main.src ./Cpu2_Main.d ./Cpu2_Main.o ./Cpu2_Main.src ./PMS_Power_Down_Standby.d ./PMS_Power_Down_Standby.o ./PMS_Power_Down_Standby.src ./SCR.d ./SCR.o ./SCR.src ./scr_a2g.d ./scr_a2g.o ./scr_a2g.src
 
 .PHONY: clean--2e-
 

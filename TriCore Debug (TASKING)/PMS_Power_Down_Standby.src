@@ -1,6 +1,6 @@
 	; Module start
 	.compiler_version	"TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler v1.1r8 Build 22011964"
-	.compiler_invocation	"ctc -f cc13724a --dep-file=PMS_Power_Down_Standby.d -c99 --fp-model=3cflnrSTz -D__CPU__=tc37x -D__CPU_TC37X__ --core=tc1.6.2 --fp-model=+float -D__CPU__=tc37x -IC:\\\\Users\\\\La\\\\Desktop\\\\TC375_Eval_board\\\\SDCC_SCR_TC375_Aurix\\\\SDCC_SCR_TC375_Aurix -IC:\\\\Users\\\\La\\\\Desktop\\\\TC375_Eval_board\\\\SDCC_SCR_TC375_Aurix\\\\SDCC_SCR_TC375_Aurix\\\\Configurations -IC:\\\\Users\\\\La\\\\Desktop\\\\TC375_Eval_board\\\\SDCC_SCR_TC375_Aurix\\\\SDCC_SCR_TC375_Aurix\\\\Libraries -IC:\\\\Users\\\\La\\\\Desktop\\\\TC375_Eval_board\\\\SDCC_SCR_TC375_Aurix\\\\SDCC_SCR_TC375_Aurix\\\\Libraries\\\\Infra -IC:\\\\Users\\\\La\\\\Desktop\\\\TC375_Eval_board\\\\SDCC_SCR_TC375_Aurix\\\\SDCC_SCR_TC375_Aurix\\\\Libraries\\\\Infra\\\\Platform -IC:\\\\Users\\\\La\\\\Desktop\\\\TC375_Eval_board\\\\SDCC_SCR_TC375_Aurix\\\\SDCC_SCR_TC375_Aurix\\\\Libraries\\\\Infra\\\\Platform\\\\Tricore -IC:\\\\Users\\\\La\\\\Desktop\\\\TC375_Eval_board\\\\SDCC_SCR_TC375_Aurix\\\\SDCC_SCR_TC375_Aurix\\\\Libraries\\\\Infra\\\\Platform\\\\Tricore\\\\Compilers -IC:\\\\Users\\\\La\\\\Desktop\\\\TC375_Eval_board\\\\SDCC_SCR_TC375_Aurix\\\\SDCC_SCR_TC375_Aurix\\\\Libraries\\\\Infra\\\\Sfr -IC:\\\\Users\\\\La\\\\Desktop\\\\TC375_Eval_board\\\\SDCC_SCR_TC375_Aurix\\\\SDCC_SCR_TC375_Aurix\\\\Libraries\\\\Infra\\\\Sfr\\\\TC37A -IC:\\\\Users\\\\La\\\\Desktop\\\\TC375_Eval_board\\\\SDCC_SCR_TC375_Aurix\\\\SDCC_SCR_TC375_Aurix\\\\Libraries\\\\Infra\\\\Sfr\\\\TC37A\\\\_Reg -IC:\\\\Users\\\\La\\\\Desktop\\\\TC375_Eval_board\\\\SDCC_SCR_TC375_Aurix\\\\SDCC_SCR_TC375_Aurix\\\\Libraries\\\\Infra\\\\Ssw -IC:\\\\Users\\\\La\\\\Desktop\\\\TC375_Eval_board\\\\SDCC_SCR_TC375_Aurix\\\\SDCC_SCR_TC375_Aurix\\\\Libraries\\\\Infra\\\\Ssw\\\\TC37A -IC:\\\\Users\\\\La\\\\Desktop\\\\TC375_Eval_board\\\\SDCC_SCR_TC375_Aurix\\\\SDCC_SCR_TC375_Aurix\\\\Libraries\\\\Infra\\\\Ssw\\\\TC37A\\\\Tricore -IC:\\\\Users\\\\La\\\\Desktop\\\\TC375_Eval_board\\\\SDCC_SCR_TC375_Aurix\\\\SDCC_SCR_TC375_Aurix\\\\Libraries\\\\Service -IC:\\\\Users\\\\La\\\\Desktop\\\\TC375_Eval_board\\\\SDCC_SCR_TC375_Aurix\\\\SDCC_SCR_TC375_Aurix\\\\Libraries\\\\Service\\\\CpuGeneric -IC:\\\\Users\\\\La\\\\Desktop\\\\TC375_Eval_board\\\\SDCC_SCR_TC375_Aurix\\\\SDCC_SCR_TC375_Aurix\\\\Libraries\\\\Service\\\\CpuGeneric\\\\_Utilities -IC:\\\\Users\\\\La\\\\Desktop\\\\TC375_Eval_board\\\\SDCC_SCR_TC375_Aurix\\\\SDCC_SCR_TC375_Aurix\\\\Libraries\\\\iLLD -IC:\\\\Users\\\\La\\\\Desktop\\\\TC375_Eval_board\\\\SDCC_SCR_TC375_Aurix\\\\SDCC_SCR_TC375_Aurix\\\\Libraries\\\\iLLD\\\\TC37A -IC:\\\\Users\\\\La\\\\Desktop\\\\TC375_Eval_board\\\\SDCC_SCR_TC375_Aurix\\\\SDCC_SCR_TC375_Aurix\\\\Libraries\\\\iLLD\\\\TC37A\\\\Tricore -IC:\\\\Users\\\\La\\\\Desktop\\\\TC375_Eval_board\\\\SDCC_SCR_TC375_Aurix\\\\SDCC_SCR_TC375_Aurix\\\\Libraries\\\\iLLD\\\\TC37A\\\\Tricore\\\\Cpu -IC:\\\\Users\\\\La\\\\Desktop\\\\TC375_Eval_board\\\\SDCC_SCR_TC375_Aurix\\\\SDCC_SCR_TC375_Aurix\\\\Libraries\\\\iLLD\\\\TC37A\\\\Tricore\\\\Cpu\\\\Irq -IC:\\\\Users\\\\La\\\\Desktop\\\\TC375_Eval_board\\\\SDCC_SCR_TC375_Aurix\\\\SDCC_SCR_TC375_Aurix\\\\Libraries\\\\iLLD\\\\TC37A\\\\Tricore\\\\Cpu\\\\Std -IC:\\\\Users\\\\La\\\\Desktop\\\\TC375_Eval_board\\\\SDCC_SCR_TC375_Aurix\\\\SDCC_SCR_TC375_Aurix\\\\Libraries\\\\iLLD\\\\TC37A\\\\Tricore\\\\Cpu\\\\Trap -IC:\\\\Users\\\\La\\\\Desktop\\\\TC375_Eval_board\\\\SDCC_SCR_TC375_Aurix\\\\SDCC_SCR_TC375_Aurix\\\\Libraries\\\\iLLD\\\\TC37A\\\\Tricore\\\\Gtm -IC:\\\\Users\\\\La\\\\Desktop\\\\TC375_Eval_board\\\\SDCC_SCR_TC375_Aurix\\\\SDCC_SCR_TC375_Aurix\\\\Libraries\\\\iLLD\\\\TC37A\\\\Tricore\\\\Gtm\\\\Std -IC:\\\\Users\\\\La\\\\Desktop\\\\TC375_Eval_board\\\\SDCC_SCR_TC375_Aurix\\\\SDCC_SCR_TC375_Aurix\\\\Libraries\\\\iLLD\\\\TC37A\\\\Tricore\\\\Mtu -IC:\\\\Users\\\\La\\\\Desktop\\\\TC375_Eval_board\\\\SDCC_SCR_TC375_Aurix\\\\SDCC_SCR_TC375_Aurix\\\\Libraries\\\\iLLD\\\\TC37A\\\\Tricore\\\\Mtu\\\\Std -IC:\\\\Users\\\\La\\\\Desktop\\\\TC375_Eval_board\\\\SDCC_SCR_TC375_Aurix\\\\SDCC_SCR_TC375_Aurix\\\\Libraries\\\\iLLD\\\\TC37A\\\\Tricore\\\\Pms -IC:\\\\Users\\\\La\\\\Desktop\\\\TC375_Eval_board\\\\SDCC_SCR_TC375_Aurix\\\\SDCC_SCR_TC375_Aurix\\\\Libraries\\\\iLLD\\\\TC37A\\\\Tricore\\\\Pms\\\\Std -IC:\\\\Users\\\\La\\\\Desktop\\\\TC375_Eval_board\\\\SDCC_SCR_TC375_Aurix\\\\SDCC_SCR_TC375_Aurix\\\\Libraries\\\\iLLD\\\\TC37A\\\\Tricore\\\\Port -IC:\\\\Users\\\\La\\\\Desktop\\\\TC375_Eval_board\\\\SDCC_SCR_TC375_Aurix\\\\SDCC_SCR_TC375_Aurix\\\\Libraries\\\\iLLD\\\\TC37A\\\\Tricore\\\\Port\\\\Std -IC:\\\\Users\\\\La\\\\Desktop\\\\TC375_Eval_board\\\\SDCC_SCR_TC375_Aurix\\\\SDCC_SCR_TC375_Aurix\\\\Libraries\\\\iLLD\\\\TC37A\\\\Tricore\\\\Scu -IC:\\\\Users\\\\La\\\\Desktop\\\\TC375_Eval_board\\\\SDCC_SCR_TC375_Aurix\\\\SDCC_SCR_TC375_Aurix\\\\Libraries\\\\iLLD\\\\TC37A\\\\Tricore\\\\Scu\\\\Std -IC:\\\\Users\\\\La\\\\Desktop\\\\TC375_Eval_board\\\\SDCC_SCR_TC375_Aurix\\\\SDCC_SCR_TC375_Aurix\\\\Libraries\\\\iLLD\\\\TC37A\\\\Tricore\\\\Src -IC:\\\\Users\\\\La\\\\Desktop\\\\TC375_Eval_board\\\\SDCC_SCR_TC375_Aurix\\\\SDCC_SCR_TC375_Aurix\\\\Libraries\\\\iLLD\\\\TC37A\\\\Tricore\\\\Src\\\\Std -IC:\\\\Users\\\\La\\\\Desktop\\\\TC375_Eval_board\\\\SDCC_SCR_TC375_Aurix\\\\SDCC_SCR_TC375_Aurix\\\\Libraries\\\\iLLD\\\\TC37A\\\\Tricore\\\\_Impl -IC:\\\\Users\\\\La\\\\Desktop\\\\TC375_Eval_board\\\\SDCC_SCR_TC375_Aurix\\\\SDCC_SCR_TC375_Aurix\\\\Libraries\\\\iLLD\\\\TC37A\\\\Tricore\\\\_PinMap -IC:\\\\Users\\\\La\\\\Desktop\\\\TC375_Eval_board\\\\SDCC_SCR_TC375_Aurix\\\\SDCC_SCR_TC375_Aurix\\\\SCR Debug (SDCC) -g2 -w544 -w557 -t4 --language=+volatile -N0 -O0 -Y0 -Z0 --compact-max-size=200 --misrac-version=2004 -o PMS_Power_Down_Standby.src ../PMS_Power_Down_Standby.c"
+	.compiler_invocation	"ctc -f cc12648a --dep-file=PMS_Power_Down_Standby.d -c99 --fp-model=3cflnrSTz -D__CPU__=tc37x -D__CPU_TC37X__ --core=tc1.6.2 --fp-model=+float -D__CPU__=tc37x -IC:\\\\Users\\\\La\\\\Desktop\\\\TC375_Eval_board\\\\SDCC_SCR_TC375_Aurix\\\\SDCC_SCR_TC375_Aurix -IC:\\\\Users\\\\La\\\\Desktop\\\\TC375_Eval_board\\\\SDCC_SCR_TC375_Aurix\\\\SDCC_SCR_TC375_Aurix\\\\Configurations -IC:\\\\Users\\\\La\\\\Desktop\\\\TC375_Eval_board\\\\SDCC_SCR_TC375_Aurix\\\\SDCC_SCR_TC375_Aurix\\\\Libraries -IC:\\\\Users\\\\La\\\\Desktop\\\\TC375_Eval_board\\\\SDCC_SCR_TC375_Aurix\\\\SDCC_SCR_TC375_Aurix\\\\Libraries\\\\Infra -IC:\\\\Users\\\\La\\\\Desktop\\\\TC375_Eval_board\\\\SDCC_SCR_TC375_Aurix\\\\SDCC_SCR_TC375_Aurix\\\\Libraries\\\\Infra\\\\Platform -IC:\\\\Users\\\\La\\\\Desktop\\\\TC375_Eval_board\\\\SDCC_SCR_TC375_Aurix\\\\SDCC_SCR_TC375_Aurix\\\\Libraries\\\\Infra\\\\Platform\\\\Tricore -IC:\\\\Users\\\\La\\\\Desktop\\\\TC375_Eval_board\\\\SDCC_SCR_TC375_Aurix\\\\SDCC_SCR_TC375_Aurix\\\\Libraries\\\\Infra\\\\Platform\\\\Tricore\\\\Compilers -IC:\\\\Users\\\\La\\\\Desktop\\\\TC375_Eval_board\\\\SDCC_SCR_TC375_Aurix\\\\SDCC_SCR_TC375_Aurix\\\\Libraries\\\\Infra\\\\Sfr -IC:\\\\Users\\\\La\\\\Desktop\\\\TC375_Eval_board\\\\SDCC_SCR_TC375_Aurix\\\\SDCC_SCR_TC375_Aurix\\\\Libraries\\\\Infra\\\\Sfr\\\\TC37A -IC:\\\\Users\\\\La\\\\Desktop\\\\TC375_Eval_board\\\\SDCC_SCR_TC375_Aurix\\\\SDCC_SCR_TC375_Aurix\\\\Libraries\\\\Infra\\\\Sfr\\\\TC37A\\\\_Reg -IC:\\\\Users\\\\La\\\\Desktop\\\\TC375_Eval_board\\\\SDCC_SCR_TC375_Aurix\\\\SDCC_SCR_TC375_Aurix\\\\Libraries\\\\Infra\\\\Ssw -IC:\\\\Users\\\\La\\\\Desktop\\\\TC375_Eval_board\\\\SDCC_SCR_TC375_Aurix\\\\SDCC_SCR_TC375_Aurix\\\\Libraries\\\\Infra\\\\Ssw\\\\TC37A -IC:\\\\Users\\\\La\\\\Desktop\\\\TC375_Eval_board\\\\SDCC_SCR_TC375_Aurix\\\\SDCC_SCR_TC375_Aurix\\\\Libraries\\\\Infra\\\\Ssw\\\\TC37A\\\\Tricore -IC:\\\\Users\\\\La\\\\Desktop\\\\TC375_Eval_board\\\\SDCC_SCR_TC375_Aurix\\\\SDCC_SCR_TC375_Aurix\\\\Libraries\\\\Service -IC:\\\\Users\\\\La\\\\Desktop\\\\TC375_Eval_board\\\\SDCC_SCR_TC375_Aurix\\\\SDCC_SCR_TC375_Aurix\\\\Libraries\\\\Service\\\\CpuGeneric -IC:\\\\Users\\\\La\\\\Desktop\\\\TC375_Eval_board\\\\SDCC_SCR_TC375_Aurix\\\\SDCC_SCR_TC375_Aurix\\\\Libraries\\\\Service\\\\CpuGeneric\\\\_Utilities -IC:\\\\Users\\\\La\\\\Desktop\\\\TC375_Eval_board\\\\SDCC_SCR_TC375_Aurix\\\\SDCC_SCR_TC375_Aurix\\\\Libraries\\\\iLLD -IC:\\\\Users\\\\La\\\\Desktop\\\\TC375_Eval_board\\\\SDCC_SCR_TC375_Aurix\\\\SDCC_SCR_TC375_Aurix\\\\Libraries\\\\iLLD\\\\TC37A -IC:\\\\Users\\\\La\\\\Desktop\\\\TC375_Eval_board\\\\SDCC_SCR_TC375_Aurix\\\\SDCC_SCR_TC375_Aurix\\\\Libraries\\\\iLLD\\\\TC37A\\\\Tricore -IC:\\\\Users\\\\La\\\\Desktop\\\\TC375_Eval_board\\\\SDCC_SCR_TC375_Aurix\\\\SDCC_SCR_TC375_Aurix\\\\Libraries\\\\iLLD\\\\TC37A\\\\Tricore\\\\Cpu -IC:\\\\Users\\\\La\\\\Desktop\\\\TC375_Eval_board\\\\SDCC_SCR_TC375_Aurix\\\\SDCC_SCR_TC375_Aurix\\\\Libraries\\\\iLLD\\\\TC37A\\\\Tricore\\\\Cpu\\\\Irq -IC:\\\\Users\\\\La\\\\Desktop\\\\TC375_Eval_board\\\\SDCC_SCR_TC375_Aurix\\\\SDCC_SCR_TC375_Aurix\\\\Libraries\\\\iLLD\\\\TC37A\\\\Tricore\\\\Cpu\\\\Std -IC:\\\\Users\\\\La\\\\Desktop\\\\TC375_Eval_board\\\\SDCC_SCR_TC375_Aurix\\\\SDCC_SCR_TC375_Aurix\\\\Libraries\\\\iLLD\\\\TC37A\\\\Tricore\\\\Cpu\\\\Trap -IC:\\\\Users\\\\La\\\\Desktop\\\\TC375_Eval_board\\\\SDCC_SCR_TC375_Aurix\\\\SDCC_SCR_TC375_Aurix\\\\Libraries\\\\iLLD\\\\TC37A\\\\Tricore\\\\Gtm -IC:\\\\Users\\\\La\\\\Desktop\\\\TC375_Eval_board\\\\SDCC_SCR_TC375_Aurix\\\\SDCC_SCR_TC375_Aurix\\\\Libraries\\\\iLLD\\\\TC37A\\\\Tricore\\\\Gtm\\\\Std -IC:\\\\Users\\\\La\\\\Desktop\\\\TC375_Eval_board\\\\SDCC_SCR_TC375_Aurix\\\\SDCC_SCR_TC375_Aurix\\\\Libraries\\\\iLLD\\\\TC37A\\\\Tricore\\\\Mtu -IC:\\\\Users\\\\La\\\\Desktop\\\\TC375_Eval_board\\\\SDCC_SCR_TC375_Aurix\\\\SDCC_SCR_TC375_Aurix\\\\Libraries\\\\iLLD\\\\TC37A\\\\Tricore\\\\Mtu\\\\Std -IC:\\\\Users\\\\La\\\\Desktop\\\\TC375_Eval_board\\\\SDCC_SCR_TC375_Aurix\\\\SDCC_SCR_TC375_Aurix\\\\Libraries\\\\iLLD\\\\TC37A\\\\Tricore\\\\Pms -IC:\\\\Users\\\\La\\\\Desktop\\\\TC375_Eval_board\\\\SDCC_SCR_TC375_Aurix\\\\SDCC_SCR_TC375_Aurix\\\\Libraries\\\\iLLD\\\\TC37A\\\\Tricore\\\\Pms\\\\Std -IC:\\\\Users\\\\La\\\\Desktop\\\\TC375_Eval_board\\\\SDCC_SCR_TC375_Aurix\\\\SDCC_SCR_TC375_Aurix\\\\Libraries\\\\iLLD\\\\TC37A\\\\Tricore\\\\Port -IC:\\\\Users\\\\La\\\\Desktop\\\\TC375_Eval_board\\\\SDCC_SCR_TC375_Aurix\\\\SDCC_SCR_TC375_Aurix\\\\Libraries\\\\iLLD\\\\TC37A\\\\Tricore\\\\Port\\\\Std -IC:\\\\Users\\\\La\\\\Desktop\\\\TC375_Eval_board\\\\SDCC_SCR_TC375_Aurix\\\\SDCC_SCR_TC375_Aurix\\\\Libraries\\\\iLLD\\\\TC37A\\\\Tricore\\\\Scu -IC:\\\\Users\\\\La\\\\Desktop\\\\TC375_Eval_board\\\\SDCC_SCR_TC375_Aurix\\\\SDCC_SCR_TC375_Aurix\\\\Libraries\\\\iLLD\\\\TC37A\\\\Tricore\\\\Scu\\\\Std -IC:\\\\Users\\\\La\\\\Desktop\\\\TC375_Eval_board\\\\SDCC_SCR_TC375_Aurix\\\\SDCC_SCR_TC375_Aurix\\\\Libraries\\\\iLLD\\\\TC37A\\\\Tricore\\\\Src -IC:\\\\Users\\\\La\\\\Desktop\\\\TC375_Eval_board\\\\SDCC_SCR_TC375_Aurix\\\\SDCC_SCR_TC375_Aurix\\\\Libraries\\\\iLLD\\\\TC37A\\\\Tricore\\\\Src\\\\Std -IC:\\\\Users\\\\La\\\\Desktop\\\\TC375_Eval_board\\\\SDCC_SCR_TC375_Aurix\\\\SDCC_SCR_TC375_Aurix\\\\Libraries\\\\iLLD\\\\TC37A\\\\Tricore\\\\_Impl -IC:\\\\Users\\\\La\\\\Desktop\\\\TC375_Eval_board\\\\SDCC_SCR_TC375_Aurix\\\\SDCC_SCR_TC375_Aurix\\\\Libraries\\\\iLLD\\\\TC37A\\\\Tricore\\\\_PinMap -IC:\\\\Users\\\\La\\\\Desktop\\\\TC375_Eval_board\\\\SDCC_SCR_TC375_Aurix\\\\SDCC_SCR_TC375_Aurix\\\\SCR Debug (SDCC) -g2 -w544 -w557 -t4 --language=+volatile -N0 -O0 -Y0 -Z0 --compact-max-size=200 --misrac-version=2004 -o PMS_Power_Down_Standby.src ../PMS_Power_Down_Standby.c"
 	.compiler_name		"ctc"
 	;source	'../PMS_Power_Down_Standby.c'
 
@@ -135,15 +135,15 @@ stepIntoStandbyMode:	.type	func
 	movh.a	a15,#61477
 	ld.w	d15,[a15]@los(0xf02480b4)
 .L87:
-	mov	d0,#1
+	mov	d0,#0
 .L118:
 	insert	d15,d15,d0,#26,#1
 .L119:
-	mov	d0,#1
+	mov	d0,#0
 .L120:
 	insert	d15,d15,d0,#30,#1
 .L121:
-	mov	d0,#3
+	mov	d0,#0
 .L122:
 	insert	d15,d15,d0,#11,#2
 .L123:
@@ -159,19 +159,16 @@ stepIntoStandbyMode:	.type	func
 .L128:
 	insert	d15,d15,d0,#29,#1
 .L129:
+	mov	d0,#2
+.L130:
+	insert	d15,d15,d0,#16,#3
+.L131:
 	movh.a	a15,#61477
 	st.w	[a15]@los(0xf02480b4),d15
-.L130:
-	movh.a	a15,#61443
-	ld.bu	d15,[a15]@los(0xf00360eb)
-.L88:
-	insert	d15,d15,#1,#4,#3
-	movh.a	a15,#61443
-	st.b	[a15]@los(0xf00360eb),d15
-.L131:
+.L132:
 	movh.a	a15,#61443
 	ld.bu	d15,[a15]@los(0xf00360c8)
-.L132:
+.L88:
 	or	d15,#3
 	movh.a	a15,#61443
 	st.b	[a15]@los(0xf00360c8),d15
@@ -9057,7 +9054,7 @@ __stepIntoStandbyMode_function_end:
 	.byte	2
 	.word	.L12
 	.byte	3
-	.byte	'initLEDs',0,1,55,6,1,1,1
+	.byte	'initLEDs',0,1,62,6,1,1,1
 	.word	.L7,.L31,.L6
 	.byte	4
 	.word	.L7,.L31
@@ -9108,27 +9105,27 @@ __stepIntoStandbyMode_function_end:
 .L96:
 	.byte	5,30,7,0,5,2
 	.word	.L7
-	.byte	3,57,1,5,40,9
+	.byte	3,192,0,1,5,40,9
 	.half	.L97-.L7
 	.byte	1,5,69,9
 	.half	.L98-.L97
 	.byte	1,4,2,5,61,9
 	.half	.L33-.L98
-	.byte	3,240,4,1,5,40,9
+	.byte	3,233,4,1,5,40,9
 	.half	.L99-.L33
 	.byte	1,4,1,5,30,9
 	.half	.L34-.L99
-	.byte	3,145,123,1,5,40,9
+	.byte	3,152,123,1,5,40,9
 	.half	.L100-.L34
 	.byte	1,5,69,9
 	.half	.L101-.L100
 	.byte	1,4,2,5,61,9
 	.half	.L44-.L101
-	.byte	3,239,4,1,5,40,9
+	.byte	3,232,4,1,5,40,9
 	.half	.L102-.L44
 	.byte	1,4,1,5,1,9
 	.half	.L45-.L102
-	.byte	3,146,123,1,7,9
+	.byte	3,153,123,1,7,9
 	.half	.L20-.L45
 	.byte	0,1,1
 .L94:
@@ -9151,7 +9148,7 @@ __stepIntoStandbyMode_function_end:
 	.byte	2
 	.word	.L12
 	.byte	3
-	.byte	'runStandby',0,1,63,6,1,1,1
+	.byte	'runStandby',0,1,70,6,1,1,1
 	.word	.L9,.L46,.L8
 	.byte	4
 	.word	.L9,.L46
@@ -9194,7 +9191,7 @@ __stepIntoStandbyMode_function_end:
 	.byte	0,0,0,4
 	.word	.L66,.L73
 	.byte	9
-	.byte	'i',0,1,68,16
+	.byte	'i',0,1,75,16
 	.word	.L74,.L75
 	.byte	0,5
 	.word	.L47,.L76,.L77
@@ -9217,7 +9214,7 @@ __stepIntoStandbyMode_function_end:
 	.byte	0,0,0,4
 	.word	.L77,.L79
 	.byte	9
-	.byte	'i',0,1,72,16
+	.byte	'i',0,1,79,16
 	.word	.L74,.L80
 	.byte	0,0,0,0
 	.sdecl	'.debug_abbrev',debug,cluster('runStandby')
@@ -9242,23 +9239,23 @@ __stepIntoStandbyMode_function_end:
 .L106:
 	.byte	5,23,7,0,5,2
 	.word	.L9
-	.byte	3,192,0,1,4,2,5,41,9
+	.byte	3,199,0,1,4,2,5,41,9
 	.half	.L48-.L9
-	.byte	3,221,4,1,5,26,9
+	.byte	3,214,4,1,5,26,9
 	.half	.L56-.L48
 	.byte	3,18,1,5,17,9
 	.half	.L107-.L56
 	.byte	1,4,1,5,24,9
 	.half	.L49-.L107
-	.byte	3,146,123,1,4,2,5,41,9
+	.byte	3,153,123,1,4,2,5,41,9
 	.half	.L65-.L49
-	.byte	3,214,4,1,5,26,9
+	.byte	3,207,4,1,5,26,9
 	.half	.L72-.L65
 	.byte	3,24,1,5,17,9
 	.half	.L108-.L72
 	.byte	1,4,1,5,22,9
 	.half	.L66-.L108
-	.byte	3,148,123,1,5,44,9
+	.byte	3,155,123,1,5,44,9
 	.half	.L85-.L66
 	.byte	1,5,47,9
 	.half	.L3-.L85
@@ -9268,13 +9265,13 @@ __stepIntoStandbyMode_function_end:
 	.half	.L73-.L2
 	.byte	3,2,1,4,2,5,41,9
 	.half	.L76-.L73
-	.byte	3,216,4,1,5,26,9
+	.byte	3,209,4,1,5,26,9
 	.half	.L78-.L76
 	.byte	3,18,1,5,17,9
 	.half	.L109-.L78
 	.byte	1,4,1,5,20,9
 	.half	.L77-.L109
-	.byte	3,152,123,1,5,40,9
+	.byte	3,159,123,1,5,40,9
 	.half	.L86-.L77
 	.byte	1,5,43,9
 	.half	.L5-.L86
@@ -9307,14 +9304,14 @@ __stepIntoStandbyMode_function_end:
 	.byte	2
 	.word	.L12
 	.byte	3
-	.byte	'stepIntoStandbyMode',0,1,78,6,1,1,1
+	.byte	'stepIntoStandbyMode',0,1,85,6,1,1,1
 	.word	.L11,.L81,.L10
 	.byte	4
 	.word	.L11,.L81
 	.byte	4
 	.word	.L82,.L81
 	.byte	5
-	.byte	'pmswcr0',0,1,85,21
+	.byte	'pmswcr0',0,1,92,21
 	.word	.L83,.L84
 	.byte	0,0,0,0
 	.sdecl	'.debug_abbrev',debug,cluster('stepIntoStandbyMode')
@@ -9335,7 +9332,7 @@ __stepIntoStandbyMode_function_end:
 .L114:
 	.byte	5,69,7,0,5,2
 	.word	.L11
-	.byte	3,207,0,1,5,63,9
+	.byte	3,214,0,1,5,63,9
 	.half	.L115-.L11
 	.byte	3,1,1,5,32,9
 	.half	.L116-.L115
@@ -9367,18 +9364,18 @@ __stepIntoStandbyMode_function_end:
 	.half	.L127-.L126
 	.byte	3,1,1,5,25,9
 	.half	.L128-.L127
-	.byte	1,5,26,9
+	.byte	1,5,28,9
 	.half	.L129-.L128
-	.byte	3,1,1,5,18,9
+	.byte	3,1,1,5,26,9
 	.half	.L130-.L129
-	.byte	3,2,1,5,26,9
-	.half	.L88-.L130
-	.byte	1,5,17,9
-	.half	.L131-.L88
-	.byte	3,1,1,5,25,9
+	.byte	1,9
+	.half	.L131-.L130
+	.byte	3,2,1,5,17,9
 	.half	.L132-.L131
+	.byte	3,2,1,5,25,9
+	.half	.L88-.L132
 	.byte	1,5,67,9
-	.half	.L133-.L132
+	.half	.L133-.L88
 	.byte	3,2,1,5,61,9
 	.half	.L134-.L133
 	.byte	3,1,1,5,1,9
