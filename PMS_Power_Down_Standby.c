@@ -48,6 +48,13 @@
 #define DISABLE_WAKEUP_ON_VEXT_RAMPUP       0x0
 #define REQUEST_STANDBY                     0x3             /* Standby Mode request bits for the system             */
 
+#define DISABLE_WAKEUP_ON_PORST             0x0
+#define DISABLE_WAKEUP_ON_PINA              0x0
+#define DO_NOT_TRIGGER_ON_ANY_EDGE          0x0
+
+#define STANDBY_RAM_IS_SUPPLIED             0x2             /* Standby RAM (CPU0 dLMU RAM) is supplied.*/
+
+
 /*********************************************************************************************************************/
 /*------------------------------------------------Function Implementations-------------------------------------------*/
 /*********************************************************************************************************************/
@@ -84,15 +91,16 @@ void stepIntoStandbyMode(void)
 
     Ifx_PMS_PMSWCR0 pmswcr0;                                              /* Stdby and Wake-up Ctrl Reg 0 handle    */
     pmswcr0.U = MODULE_PMS.PMSWCR0.U;                                     /* Assign current register value to it    */
-    pmswcr0.B.PINAWKEN  = WAKEUP_PINA_ENABLE;                             /* Enable WakeUp on Pin A                 */
-    pmswcr0.B.PORSTWKEN = WAKEUP_PORST_ENABLE;                            /* Enable WakeUp on PORST                 */
-    pmswcr0.B.PINAEDCON = TRIGGER_ON_ANY_EDGE;                            /* Generate WakeUp Trigger at any edge    */
+    pmswcr0.B.PINAWKEN  = DISABLE_WAKEUP_ON_PINA;                         /* DISABLE_WAKEUP_ON_PINA                 */
+    pmswcr0.B.PORSTWKEN = DISABLE_WAKEUP_ON_PORST;                        /* DISABLE_WAKEUP_ON_PORST                 */
+    pmswcr0.B.PINAEDCON = DO_NOT_TRIGGER_ON_ANY_EDGE;                     /* DO_NOT_TRIGGER_ON_ANY_EDGE    */
     pmswcr0.B.ESR0EDCON = DISABLE_WAKEUP_ON_ESR0;                         /* Disable WakeUpTrigger at any ESR0 edge */
     pmswcr0.B.PWRWKEN   = DISABLE_WAKEUP_ON_VEXT_RAMPUP;                  /* Disable WakeUpTrigger on VEXT ramp up  */
-    pmswcr0.B.SCRWKEN   = WAKEUP_SCR_ENABLE;                               /* Enable WakeUp on SCR                 */
+    pmswcr0.B.SCRWKEN   = WAKEUP_SCR_ENABLE;                              /* Enable WakeUp on SCR                 */
+    pmswcr0.B.STBYRAMSEL = STANDBY_RAM_IS_SUPPLIED;                       /* Standby RAM (CPU0 dLMU RAM) is supplied.*/
+
     MODULE_PMS.PMSWCR0.U = pmswcr0.U;                                     /* Assign object to register              */
 
-    SCU_PMSWCR1.B.STBYEV = 1;
     SCU_PMCSR0.B.REQSLP = REQUEST_STANDBY;                                /* Request Standby Mode for the system    */
 
     IfxScuWdt_setSafetyEndinit(IfxScuWdt_getSafetyWatchdogPassword());    /* Set Safety EndInit protection          */

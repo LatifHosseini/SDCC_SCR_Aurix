@@ -51,7 +51,7 @@
 /*-------------------------Function Implementations---------------------------*/
 /******************************************************************************/
 
-void IfxPmsPm_setStandbyMode(Ifx_PMS *pms, IfxPmsPm_WakeupConfig *config, IfxPmsPm_RequestPowerMode powerMode)
+void IfxPmsPm_setStandbyMode(Ifx_PMS *pms,    *config, IfxPmsPm_RequestPowerMode powerMode)
 {
     uint8  alarmGroup  = 8;
     uint32 alarmMask   = 0x1DU;
