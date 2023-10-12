@@ -5,13 +5,19 @@
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
 ../SCR/main.c \
-../SCR/rtc_init.c \
-../SCR/scr_adc.c 
+../SCR/scr_adc_init.c \
+../SCR/scr_gpio_init.c \
+../SCR/scr_rtc_init.c \
+../SCR/scr_t2ccu.c \
+../SCR/wakeup_tricore.c 
 
 OBJS += \
 ./SCR/main.o \
-./SCR/rtc_init.o \
-./SCR/scr_adc.o 
+./SCR/scr_adc_init.o \
+./SCR/scr_gpio_init.o \
+./SCR/scr_rtc_init.o \
+./SCR/scr_t2ccu.o \
+./SCR/wakeup_tricore.o 
 
 
 # Each subdirectory must supply rules for building sources it contributes
@@ -26,7 +32,7 @@ SCR/%.o: ../SCR/%.c SCR/subdir.mk
 clean: clean-SCR
 
 clean-SCR:
-	-$(RM) ./SCR/main.o ./SCR/rtc_init.o ./SCR/scr_adc.o
+	-$(RM) ./SCR/main.o ./SCR/scr_adc_init.o ./SCR/scr_gpio_init.o ./SCR/scr_rtc_init.o ./SCR/scr_t2ccu.o ./SCR/wakeup_tricore.o
 
 .PHONY: clean-SCR
 

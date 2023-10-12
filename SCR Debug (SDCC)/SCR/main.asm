@@ -10,13 +10,16 @@
 ;--------------------------------------------------------
 ; Public variables in this module
 ;--------------------------------------------------------
+	.globl	_EXINT5IS_interrupt
+	.globl	_EXINT2IS_interrupt
 	.globl	_rtc_interrupt
 	.globl	_main
-	.globl	_scr_adc_init
-	.globl	_scr_rtcInit
+	.globl	_gpio_init
+	.globl	_CaptureFlag
+	.globl	_RissingEdge
+	.globl	_FellingEdge
 	.globl	_var_1
 	.globl	_delay
-	.globl	_gpoi_init
 ;--------------------------------------------------------
 ; special function registers
 ;--------------------------------------------------------
@@ -209,8 +212,24 @@ _SCR_ADCOMP_CON	=	0x00fb
 _var_1:
 	.ds.b	2
 ;--------------------------------------------------------
+; initialized external ram data
+;--------------------------------------------------------
+	.section .xdata.init,"aw" ;xidata_name ;area
+_FellingEdge:
+	.ds.b	2
+_RissingEdge:
+	.ds.b	2
+_CaptureFlag:
+	.ds.b	2
+;--------------------------------------------------------
 ; interrupt vector
 ;--------------------------------------------------------
+	.globl _EXINT2IS_interrupt 
+	.section .isr08, "ax"
+	ljmp	_EXINT2IS_interrupt
+	.globl _EXINT5IS_interrupt 
+	.section .isr09, "ax"
+	ljmp	_EXINT5IS_interrupt
 	.globl _rtc_interrupt 
 	.section .isr13, "ax"
 	ljmp	_rtc_interrupt
@@ -220,7 +239,7 @@ _var_1:
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'main'
 ;------------------------------------------------------------
-;	../SCR/main.c:37: void main()
+;	../SCR/main.c:42: void main()
 ;	-----------------------------------------
 ;	 function main
 ;	-----------------------------------------
@@ -228,39 +247,35 @@ _var_1:
 	.type   main, @function
 _main:
 	.using 0
-;	../SCR/main.c:42: SCR_SCU_PAGE = 1;       //Switch to page 1
+;	../SCR/main.c:47: SCR_SCU_PAGE = 1;       //Switch to page 1
 	mov	_SCR_SCU_PAGE,#0x01
-;	../SCR/main.c:43: SCR_SCU_PMCON1 = 0x59;  //OCDS, T2CCU0, RTC and WCAN enabled
+;	../SCR/main.c:48: SCR_SCU_PMCON1 = 0x59;  //OCDS, T2CCU0, RTC and WCAN enabled
 	mov	_SCR_SCU_PMCON1,#0x59
-;	../SCR/main.c:45: SCR_SCU_PAGE = 0;       //Switch to page 0
+;	../SCR/main.c:50: SCR_SCU_PAGE = 0;       //Switch to page 0
 	mov	_SCR_SCU_PAGE,#0x00
-;	../SCR/main.c:46: SCR_SCRINTEXCHG = 0xA0;
+;	../SCR/main.c:51: SCR_SCRINTEXCHG = 0xA0;
 	mov	_SCR_SCRINTEXCHG,#0xA0
-;	../SCR/main.c:47: SCR_SCU_PAGE = 1;       //Switch to page 0
+;	../SCR/main.c:52: SCR_SCU_PAGE = 1;       //Switch to page 0
 	mov	_SCR_SCU_PAGE,#0x01
-;	../SCR/main.c:49: SCR_IEN0 |= (1 << 7) ; // enable global interrupt Set bit 7
+;	../SCR/main.c:54: SCR_IEN0 |= (1 << 7) ; // enable global interrupt Set bit 7
 	orl	_SCR_IEN0,#0x80
-;	../SCR/main.c:50: SCR_IEN1 |= (1 << 7) ; // enable node 13 interrupt
+;	../SCR/main.c:55: SCR_IEN1 |= (1 << 7) ; // enable node 13 interrupt
 	orl	_SCR_IEN1,#0x80
-;	../SCR/main.c:52: gpoi_init();
-	lcall	_gpoi_init
-;	../SCR/main.c:53: scr_rtcInit();
-	lcall	_scr_rtcInit
-;	../SCR/main.c:54: scr_adc_init();
-	lcall	_scr_adc_init
-;	../SCR/main.c:58: while(1){
+;	../SCR/main.c:59: gpio_init();
+	lcall	_gpio_init
+;	../SCR/main.c:64: while(1){
 .00102:
 	sjmp	.00102
 .00104:
-;	../SCR/main.c:64: }
+;	../SCR/main.c:74: }
 	ret
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'delay'
 ;------------------------------------------------------------
-;i                         Allocated with name '_delay_i_65536_17'
-;j                         Allocated with name '_delay_j_65536_17'
+;i                         Allocated with name '_delay_i_65536_19'
+;j                         Allocated with name '_delay_j_65536_19'
 ;------------------------------------------------------------
-;	../SCR/main.c:68: void delay(void){
+;	../SCR/main.c:78: void delay(void){
 ;	-----------------------------------------
 ;	 function delay
 ;	-----------------------------------------
@@ -268,10 +283,10 @@ _main:
 	.type   delay, @function
 _delay:
 	.using 0
-;	../SCR/main.c:72: for( i = 0; i < 1000; i++){
+;	../SCR/main.c:82: for( i = 0; i < 1000; i++){
 	mov	r6,#0x00
 	mov	r7,#0x00
-;	../SCR/main.c:73: for(j = 0; j< 1000; j++){
+;	../SCR/main.c:83: for(j = 0; j< 1000; j++){
 .00119:
 	mov	r4,#0xE8
 	mov	r5,#0x03
@@ -284,7 +299,7 @@ _delay:
 	orl	a,r5
 	jnz	.00114
 .00134:
-;	../SCR/main.c:72: for( i = 0; i < 1000; i++){
+;	../SCR/main.c:82: for( i = 0; i < 1000; i++){
 	inc	r6
 	cjne	r6,#0x00,.00135
 	inc	r7
@@ -298,54 +313,40 @@ _delay:
 	jc	.00119
 .00136:
 .00117:
-;	../SCR/main.c:78: }
-	ret
-;------------------------------------------------------------
-;Allocation info for local variables in function 'gpoi_init'
-;------------------------------------------------------------
-;	../SCR/main.c:82: void gpoi_init(void){
-;	-----------------------------------------
-;	 function gpoi_init
-;	-----------------------------------------
-	.section .text.code.gpoi_init,"ax" ;code for function gpoi_init
-	.type   gpoi_init, @function
-_gpoi_init:
-	.using 0
-;	../SCR/main.c:85: SCR_IO_PAGE = 2;        //Switch to page 2
-	mov	_SCR_IO_PAGE,#0x02
-;	../SCR/main.c:86: SCR_P00_PDISC = 0x00;
-	mov	_SCR_P00_PDISC,#0x00
-;	../SCR/main.c:87: SCR_P01_PDISC = 0x00;
-	mov	_SCR_P01_PDISC,#0x00
-;	../SCR/main.c:89: SCR_IO_PAGE = 1;        //Switch to page 1
-	mov	_SCR_IO_PAGE,#0x01
-;	../SCR/main.c:90: SCR_P00_IOCR0 = 0x80;
-	mov	_SCR_P00_IOCR0,#0x80
-;	../SCR/main.c:91: SCR_P00_IOCR1 = 0x80;
-	mov	_SCR_P00_IOCR1,#0x80
-;	../SCR/main.c:92: SCR_P00_IOCR2 = 0x80;
-	mov	_SCR_P00_IOCR2,#0x80
-;	../SCR/main.c:93: SCR_P00_IOCR3 = 0x80;
-	mov	_SCR_P00_IOCR3,#0x80
-;	../SCR/main.c:94: SCR_P00_IOCR4 = 0x80;
-	mov	_SCR_P00_IOCR4,#0x80
-;	../SCR/main.c:95: SCR_P00_IOCR5 = 0x80;
-	mov	_SCR_P00_IOCR5,#0x80
-;	../SCR/main.c:96: SCR_P00_IOCR6 = 0x80;
-	mov	_SCR_P00_IOCR6,#0x80
-.00137:
-;	../SCR/main.c:98: }
+;	../SCR/main.c:88: }
 	ret
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'rtc_interrupt'
 ;------------------------------------------------------------
-;	../SCR/main.c:105: void rtc_interrupt(void) __interrupt (13){
+;	../SCR/main.c:99: void rtc_interrupt(void) __interrupt (13){
 ;	-----------------------------------------
 ;	 function rtc_interrupt
 ;	-----------------------------------------
 	.section .text.code.rtc_interrupt,"ax" ;code for function rtc_interrupt
 	.type   rtc_interrupt, @function
 _rtc_interrupt:
+	.using 0
+;	../SCR/main.c:102: SCR_RTC_CON &= ~(1 << 6) ;// clear rtc Interrupt flag
+	anl	_SCR_RTC_CON,#0xBF
+.00137:
+;	../SCR/main.c:104: }
+	reti
+;	eliminated unneeded mov psw,# (no regs used in bank)
+;	eliminated unneeded push/pop not_psw
+;	eliminated unneeded push/pop dpl
+;	eliminated unneeded push/pop dph
+;	eliminated unneeded push/pop b
+;	eliminated unneeded push/pop acc
+;------------------------------------------------------------
+;Allocation info for local variables in function 'EXINT2IS_interrupt'
+;------------------------------------------------------------
+;	../SCR/main.c:110: void EXINT2IS_interrupt(void) __interrupt (8){
+;	-----------------------------------------
+;	 function EXINT2IS_interrupt
+;	-----------------------------------------
+	.section .text.code.EXINT2IS_interrupt,"ax" ;code for function EXINT2IS_interrupt
+	.type   EXINT2IS_interrupt, @function
+_EXINT2IS_interrupt:
 	.using 0
 	push	acc
 	push	dpl
@@ -354,68 +355,42 @@ _rtc_interrupt:
 	push	ar6
 	push	psw
 	mov	psw,#0x00
-;	../SCR/main.c:106: var_1++;
-	mov	dptr,#_var_1
+;	../SCR/main.c:111: if(FellingEdge == 1){
+	mov	dptr,#_FellingEdge
 	movx	a,@dptr
 	mov	r6,a
 	inc	dptr
 	movx	a,@dptr
 	mov	r7,a
-	mov	dptr,#_var_1
-	mov	a,#0x01
-	add	a,r6
-	movx	@dptr,a
-	clr	a
-	addc	a,r7
-	inc	dptr
-	movx	@dptr,a
-;	../SCR/main.c:107: SCR_IO_PAGE = 0;
-	mov	_SCR_IO_PAGE,#0x00
-;	../SCR/main.c:108: if(var_1 == 1){
-	mov	dptr,#_var_1
-	movx	a,@dptr
-	mov	r6,a
-	inc	dptr
-	movx	a,@dptr
-	mov	r7,a
-	cjne	r6,#0x01,.00155
-	cjne	r7,#0x00,.00155
-	sjmp	.00156
-.00155:
-	sjmp	.00143
-.00156:
-;	../SCR/main.c:109: SCR_P00_OUT |= (1 << 1) ; // Set bit 6
-	orl	_SCR_P00_OUT,#0x02
-	sjmp	.00144
-.00143:
-;	../SCR/main.c:111: else if (var_1 == 2){
-	mov	dptr,#_var_1
-	movx	a,@dptr
-	mov	r6,a
-	inc	dptr
-	movx	a,@dptr
-	mov	r7,a
-	cjne	r6,#0x02,.00157
-	cjne	r7,#0x00,.00157
-	sjmp	.00158
-.00157:
+	cjne	r6,#0x01,.00147
+	cjne	r7,#0x00,.00147
+	sjmp	.00148
+.00147:
 	sjmp	.00140
-.00158:
-;	../SCR/main.c:112: SCR_P00_OUT &= ~(1 << 1) ; // Clear bit 5
-	anl	_SCR_P00_OUT,#0xFD
-	sjmp	.00144
-.00140:
-;	../SCR/main.c:115: var_1 = 0;
-	mov	dptr,#_var_1
+.00148:
+;	../SCR/main.c:112: SCR_IO_PAGE = 0;
+	mov	_SCR_IO_PAGE,#0x00
+;	../SCR/main.c:113: SCR_P00_OUT |= (1 << 4) ; // Set bit 5
+	orl	_SCR_P00_OUT,#0x10
+;	../SCR/main.c:114: SCR_P00_OUT &= ~(1 << 3) ; // Clear bit 5
+	anl	_SCR_P00_OUT,#0xF7
+;	../SCR/main.c:115: SCR_P00_OUT &= ~(1 << 5) ; // Clear bit 5
+	anl	_SCR_P00_OUT,#0xDF
+;	../SCR/main.c:116: FellingEdge = 0;
+	mov	dptr,#_FellingEdge
 	clr	a
 	movx	@dptr,a
 	inc	dptr
 	movx	@dptr,a
-.00144:
-;	../SCR/main.c:118: SCR_RTC_CON &= ~(1 << 6) ;// clear rtc Interrupt flag
-	anl	_SCR_RTC_CON,#0xBF
-.00145:
-;	../SCR/main.c:120: }
+.00140:
+;	../SCR/main.c:120: SCR_SCU_PAGE = 0;
+	mov	_SCR_SCU_PAGE,#0x00
+;	../SCR/main.c:121: SCR_IRCON2 &= ~(1 << 0) ; // Clear Bit 2
+	anl	_SCR_IRCON2,#0xFE
+;	../SCR/main.c:122: SCR_SCU_PAGE = 1;
+	mov	_SCR_SCU_PAGE,#0x01
+.00141:
+;	../SCR/main.c:124: }
 	pop	psw
 	pop	ar6
 	pop	ar7
@@ -424,3 +399,127 @@ _rtc_interrupt:
 	pop	acc
 	reti
 ;	eliminated unneeded push/pop b
+;------------------------------------------------------------
+;Allocation info for local variables in function 'EXINT5IS_interrupt'
+;------------------------------------------------------------
+;	../SCR/main.c:129: void EXINT5IS_interrupt(void) __interrupt (9){
+;	-----------------------------------------
+;	 function EXINT5IS_interrupt
+;	-----------------------------------------
+	.section .text.code.EXINT5IS_interrupt,"ax" ;code for function EXINT5IS_interrupt
+	.type   EXINT5IS_interrupt, @function
+_EXINT5IS_interrupt:
+	.using 0
+	push	acc
+	push	dpl
+	push	dph
+	push	ar7
+	push	ar6
+	push	psw
+	mov	psw,#0x00
+;	../SCR/main.c:130: RissingEdge++ ;
+	mov	dptr,#_RissingEdge
+	movx	a,@dptr
+	mov	r6,a
+	inc	dptr
+	movx	a,@dptr
+	mov	r7,a
+	mov	dptr,#_RissingEdge
+	mov	a,#0x01
+	add	a,r6
+	movx	@dptr,a
+	clr	a
+	addc	a,r7
+	inc	dptr
+	movx	@dptr,a
+;	../SCR/main.c:131: if(RissingEdge == 1){
+	mov	dptr,#_RissingEdge
+	movx	a,@dptr
+	mov	r6,a
+	inc	dptr
+	movx	a,@dptr
+	mov	r7,a
+	cjne	r6,#0x01,.00163
+	cjne	r7,#0x00,.00163
+	sjmp	.00164
+.00163:
+	sjmp	.00150
+.00164:
+;	../SCR/main.c:132: FellingEdge++;
+	mov	dptr,#_FellingEdge
+	movx	a,@dptr
+	mov	r6,a
+	inc	dptr
+	movx	a,@dptr
+	mov	r7,a
+	mov	dptr,#_FellingEdge
+	mov	a,#0x01
+	add	a,r6
+	movx	@dptr,a
+	clr	a
+	addc	a,r7
+	inc	dptr
+	movx	@dptr,a
+;	../SCR/main.c:133: SCR_IO_PAGE = 0;
+	mov	_SCR_IO_PAGE,#0x00
+;	../SCR/main.c:134: SCR_P00_OUT |= (1 << 3) ; // Set bit 5
+	orl	_SCR_P00_OUT,#0x08
+;	../SCR/main.c:135: SCR_P00_OUT &= ~(1 << 4) ; // Clear bit 5
+	anl	_SCR_P00_OUT,#0xEF
+;	../SCR/main.c:136: SCR_P00_OUT &= ~(1 << 5) ; // Clear bit 5
+	anl	_SCR_P00_OUT,#0xDF
+.00150:
+;	../SCR/main.c:138: if(RissingEdge == 2){
+	mov	dptr,#_RissingEdge
+	movx	a,@dptr
+	mov	r6,a
+	inc	dptr
+	movx	a,@dptr
+	mov	r7,a
+	cjne	r6,#0x02,.00165
+	cjne	r7,#0x00,.00165
+	sjmp	.00166
+.00165:
+	sjmp	.00152
+.00166:
+;	../SCR/main.c:140: SCR_IO_PAGE = 0;
+	mov	_SCR_IO_PAGE,#0x00
+;	../SCR/main.c:141: SCR_P00_OUT |= (1 << 5) ; // Set bit 5
+	orl	_SCR_P00_OUT,#0x20
+;	../SCR/main.c:142: SCR_P00_OUT &= ~(1 << 3) ; // Clear bit 5
+	anl	_SCR_P00_OUT,#0xF7
+;	../SCR/main.c:143: SCR_P00_OUT &= ~(1 << 4) ; // Clear bit 5
+	anl	_SCR_P00_OUT,#0xEF
+;	../SCR/main.c:144: RissingEdge = 0;
+	mov	dptr,#_RissingEdge
+	clr	a
+	movx	@dptr,a
+	inc	dptr
+	movx	@dptr,a
+.00152:
+;	../SCR/main.c:148: SCR_SCU_PAGE = 0;
+	mov	_SCR_SCU_PAGE,#0x00
+;	../SCR/main.c:149: SCR_IRCON2 &= ~(1 << 1) ; // Clear Bit 2
+	anl	_SCR_IRCON2,#0xFD
+;	../SCR/main.c:150: SCR_SCU_PAGE = 1;
+	mov	_SCR_SCU_PAGE,#0x01
+.00153:
+;	../SCR/main.c:152: }
+	pop	psw
+	pop	ar6
+	pop	ar7
+	pop	dph
+	pop	dpl
+	pop	acc
+	reti
+;	eliminated unneeded push/pop b
+;--------------------------------------------------------
+; xinit 
+;--------------------------------------------------------
+	.section .roxdata.init,"ax";xinit_name ;area
+__xinit__FellingEdge:
+	.byte #0x00, #0x00	; 0
+__xinit__RissingEdge:
+	.byte #0x00, #0x00	; 0
+__xinit__CaptureFlag:
+	.byte #0x00, #0x00	; 0

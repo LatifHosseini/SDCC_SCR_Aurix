@@ -29,8 +29,10 @@
 #include "Ifx_Types.h"
 #include "IfxCpu.h"
 #include "IfxScuWdt.h"
-
 #include "SCR.h"
+
+volatile unsigned int var_1 = 1;
+volatile unsigned int var_2 = 2;
 
 IFX_ALIGN(4) IfxCpu_syncEvent g_cpuSyncEvent = 0;
 
@@ -75,9 +77,9 @@ void core0_main(void)
         /* Configure the LEDs and put the system into Standby after a few seconds */
          //   initLEDs();
          //   runStandby();
-        stepIntoStandbyMode();
-
+        initLED();  /* Initialize the LED port pin      */
     while(1)
     {
+        blinkLED(); /* Make the LED blink           */
     }
 }

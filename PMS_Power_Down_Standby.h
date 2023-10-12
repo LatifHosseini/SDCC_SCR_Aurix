@@ -35,4 +35,7 @@ void initLEDs(void);
 void runStandby(void);
 void stepIntoStandbyMode(void);
 
+void initLED(void);
+void blinkLED(void);
+
 #endif /* PMS_POWER_DOWN_STANDBY_H_ */

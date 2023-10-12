@@ -10,6 +10,7 @@ RM := rm -rf
 -include sources.mk
 -include Libraries/iLLD/TC37A/Tricore/_PinMap/subdir.mk
 -include Libraries/iLLD/TC37A/Tricore/_Impl/subdir.mk
+-include Libraries/iLLD/TC37A/Tricore/Stm/Std/subdir.mk
 -include Libraries/iLLD/TC37A/Tricore/Src/Std/subdir.mk
 -include Libraries/iLLD/TC37A/Tricore/Scu/Std/subdir.mk
 -include Libraries/iLLD/TC37A/Tricore/Port/Std/subdir.mk
@@ -19,6 +20,7 @@ RM := rm -rf
 -include Libraries/iLLD/TC37A/Tricore/Cpu/Trap/subdir.mk
 -include Libraries/iLLD/TC37A/Tricore/Cpu/Std/subdir.mk
 -include Libraries/iLLD/TC37A/Tricore/Cpu/Irq/subdir.mk
+-include Libraries/Service/CpuGeneric/SysSe/Bsp/subdir.mk
 -include Libraries/Infra/Ssw/TC37A/Tricore/subdir.mk
 -include Libraries/Infra/Platform/Tricore/Compilers/subdir.mk
 -include Configurations/Debug/subdir.mk
@@ -70,7 +72,7 @@ all: main-build
 main-build: SDCC_SCR_TC375_Aurix.elf secondary-outputs
 
 dependents:
-	-cd C:/Users/La/Desktop/TC375_Eval_board/SDCC_SCR_TC375_Aurix/SDCC_SCR_TC375_Aurix/SCR\ Debug\ (SDCC) && $(MAKE) clean all
+	-cd C:/Users/La/Desktop/TC375_Eval_board/SDCC_SCR_TC375_Aurix/SDCC_SCR_TC375_Aurix/SCR\ Debug\ (SDCC) && $(MAKE) all
 
 # Tool invocations
 SDCC_SCR_TC375_Aurix.elf: $(OBJS) C:/Users/La/Desktop/TC375_Eval_board/SDCC_SCR_TC375_Aurix/SDCC_SCR_TC375_Aurix/SCR\ Debug\ (SDCC)/scr_a2g makefile $(OPTIONAL_TOOL_DEPS)

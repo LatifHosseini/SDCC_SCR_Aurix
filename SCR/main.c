@@ -28,10 +28,15 @@
 #include "scr_header_files.h"
 
 
+volatile unsigned int FellingEdge = 0;
+volatile unsigned int RissingEdge = 0;
+volatile unsigned int CaptureFlag = 0;
 volatile unsigned int var_1;
 
+
+
 void delay(void);
-void gpoi_init(void);
+
 
 
 void main()
@@ -49,9 +54,10 @@ void main()
     SCR_IEN0 |= (1 << 7) ; // enable global interrupt Set bit 7
     SCR_IEN1 |= (1 << 7) ; // enable node 13 interrupt
 
-    gpoi_init();
-    scr_rtcInit();
-    scr_adc_init();
+
+
+    gpio_init();
+
 
 
 
@@ -59,7 +65,11 @@ void main()
 
 
 
-	}
+
+
+	     }
+
+
 
 }
 /*****************************************************************************************
@@ -79,23 +89,7 @@ void delay(void){
 /***********************************************************************************************
  *
  **************************************************************************************************/
-void gpoi_init(void){
 
-    /* IO module configurations*/
-    SCR_IO_PAGE = 2;        //Switch to page 2
-    SCR_P00_PDISC = 0x00;
-    SCR_P01_PDISC = 0x00;
-
-    SCR_IO_PAGE = 1;        //Switch to page 1
-    SCR_P00_IOCR0 = 0x80;
-    SCR_P00_IOCR1 = 0x80;
-    SCR_P00_IOCR2 = 0x80;
-    SCR_P00_IOCR3 = 0x80;
-    SCR_P00_IOCR4 = 0x80;
-    SCR_P00_IOCR5 = 0x80;
-    SCR_P00_IOCR6 = 0x80;
-
-}
 /************************************************************************************************
  *
  *************************************************************************************************/
@@ -103,17 +97,7 @@ void gpoi_init(void){
 /*************************************************************************/
 /* RTC ISR to blink a LED */
 void rtc_interrupt(void) __interrupt (13){
-    var_1++;
-    SCR_IO_PAGE = 0;
-    if(var_1 == 1){
-        SCR_P00_OUT |= (1 << 1) ; // Set bit 6
-    }
-    else if (var_1 == 2){
-        SCR_P00_OUT &= ~(1 << 1) ; // Clear bit 5
-    }
-    else {
-        var_1 = 0;
-    }
+
 
     SCR_RTC_CON &= ~(1 << 6) ;// clear rtc Interrupt flag
 
@@ -122,4 +106,51 @@ void rtc_interrupt(void) __interrupt (13){
  *
 ************************************************************************************************************ */
 
+/*  ISR Node 8*/
+void EXINT2IS_interrupt(void) __interrupt (8){
+    if(FellingEdge == 1){
+        SCR_IO_PAGE = 0;
+        SCR_P00_OUT |= (1 << 4) ; // Set bit 5
+        SCR_P00_OUT &= ~(1 << 3) ; // Clear bit 5
+        SCR_P00_OUT &= ~(1 << 5) ; // Clear bit 5
+        FellingEdge = 0;
+    }
+
+
+    SCR_SCU_PAGE = 0;
+    SCR_IRCON2 &= ~(1 << 0) ; // Clear Bit 2
+    SCR_SCU_PAGE = 1;
+
+}
+/***********************************************************************************************************
+ *
+************************************************************************************************************ */
+/* ISR Node 9*/
+void EXINT5IS_interrupt(void) __interrupt (9){
+    RissingEdge++ ;
+    if(RissingEdge == 1){
+        FellingEdge++;
+        SCR_IO_PAGE = 0;
+        SCR_P00_OUT |= (1 << 3) ; // Set bit 5
+        SCR_P00_OUT &= ~(1 << 4) ; // Clear bit 5
+        SCR_P00_OUT &= ~(1 << 5) ; // Clear bit 5
+    }
+    if(RissingEdge == 2){
+
+        SCR_IO_PAGE = 0;
+        SCR_P00_OUT |= (1 << 5) ; // Set bit 5
+        SCR_P00_OUT &= ~(1 << 3) ; // Clear bit 5
+        SCR_P00_OUT &= ~(1 << 4) ; // Clear bit 5
+        RissingEdge = 0;
+
+    }
+
+    SCR_SCU_PAGE = 0;
+    SCR_IRCON2 &= ~(1 << 1) ; // Clear Bit 2
+    SCR_SCU_PAGE = 1;
+
+}
+/***********************************************************************************************************
+ *
+************************************************************************************************************ */
 

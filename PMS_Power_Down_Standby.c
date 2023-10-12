@@ -32,10 +32,14 @@
 #include "IfxPort.h"
 #include "IfxScuWdt.h"
 #include "IfxPms_reg.h"
+#include "Bsp.h"
 
 /*********************************************************************************************************************/
 /*------------------------------------------------------Macros-------------------------------------------------------*/
 /*********************************************************************************************************************/
+#define LED         &MODULE_P10,2                                           /* LED: Port, Pin definition            */
+#define WAIT_TIME   500       /* Wait time constant in milliseconds   */
+
 #define LED_D110                            &MODULE_P13,3   /* LED that signals the start of the application        */
 #define LED_D107                            &MODULE_P13,0   /* LED that signals the entering in Standby mode        */
 #define TICKS_TO_WAIT                       0x8000000       /* Total amount of ticks in approximately one second    */
@@ -98,11 +102,34 @@ void stepIntoStandbyMode(void)
     pmswcr0.B.PWRWKEN   = DISABLE_WAKEUP_ON_VEXT_RAMPUP;                  /* Disable WakeUpTrigger on VEXT ramp up  */
     pmswcr0.B.SCRWKEN   = WAKEUP_SCR_ENABLE;                              /* Enable WakeUp on SCR                 */
     pmswcr0.B.STBYRAMSEL = STANDBY_RAM_IS_SUPPLIED;                       /* Standby RAM (CPU0 dLMU RAM) is supplied.*/
-
     MODULE_PMS.PMSWCR0.U = pmswcr0.U;                                     /* Assign object to register              */
+
+    MODULE_PMS.PMSWCR4.B.SCRCLKSEL = 0;                                    //100MHz oscillator can be enabled or disabled based on request from Standby Controller. By default 100 MHz Oscillator is requested by SCR in Standby Mode. more info on page 961
 
     SCU_PMCSR0.B.REQSLP = REQUEST_STANDBY;                                /* Request Standby Mode for the system    */
 
     IfxScuWdt_setSafetyEndinit(IfxScuWdt_getSafetyWatchdogPassword());    /* Set Safety EndInit protection          */
     IfxScuWdt_setCpuEndinit(IfxScuWdt_getCpuWatchdogPassword());        /* Set CPU EndInit - Standby becomes active */
 }
+
+
+/* This function initializes the port pin which drives the LED */
+void initLED(void)
+{
+    /* Initialization of the LED used in this example */
+    IfxPort_setPinModeOutput(LED, IfxPort_OutputMode_pushPull, IfxPort_OutputIdx_general);
+
+    /* Switch OFF the LED */
+    IfxPort_setPinLow(LED);
+}
+
+
+/* This function toggles the port pin and wait 500 milliseconds */
+void blinkLED(void)
+{
+    IfxPort_togglePin(LED);                                                     /* Toggle the state of the LED      */
+    waitTime(IfxStm_getTicksFromMilliseconds(BSP_DEFAULT_TIMER, WAIT_TIME));    /* Wait 500 milliseconds            */
+}
+
+
+

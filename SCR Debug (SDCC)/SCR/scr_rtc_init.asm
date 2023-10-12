@@ -2,7 +2,7 @@
 ; File Created by SDCC : free open source ISO C Compiler 
 ; Version 4.2.2 #13448 (MINGW32)
 ;--------------------------------------------------------
-	.file	"rtc_init.c"
+	.file	"scr_rtc_init.c"
 ;	.optsdcc -mmcs51
 	; --model-large
 
@@ -202,7 +202,7 @@ _SCR_ADCOMP_CON	=	0x00fb
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'scr_rtcInit'
 ;------------------------------------------------------------
-;	../SCR/rtc_init.c:53: void scr_rtcInit(void){
+;	../SCR/scr_rtc_init.c:53: void scr_rtcInit(void){
 ;	-----------------------------------------
 ;	 function scr_rtcInit
 ;	-----------------------------------------
@@ -210,16 +210,6 @@ _SCR_ADCOMP_CON	=	0x00fb
 	.type   scr_rtcInit, @function
 _scr_rtcInit:
 	.using 0
-;	../SCR/rtc_init.c:58: SCR_RTC_CR0 = 0xFF;
-	mov	_SCR_RTC_CR0,#0xFF
-;	../SCR/rtc_init.c:59: SCR_RTC_CR1 = 0xFF;
-	mov	_SCR_RTC_CR1,#0xFF
-;	../SCR/rtc_init.c:60: SCR_RTC_CR2 = 0xFF;
-	mov	_SCR_RTC_CR2,#0xFF
-;	../SCR/rtc_init.c:61: SCR_RTC_CR3 = 0x01;
-	mov	_SCR_RTC_CR3,#0x01
-;	../SCR/rtc_init.c:63: SCR_RTC_CON =  0x17;        // RTC Interrupt Enable, RTC start operation, RTC 100MHz/DIV -> 20MHz 9-bit prescaler is bypassed
-	mov	_SCR_RTC_CON,#0x17
+;	../SCR/scr_rtc_init.c:61: }
 .00101:
-;	../SCR/rtc_init.c:65: }
 	ret

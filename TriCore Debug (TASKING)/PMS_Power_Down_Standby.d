@@ -56,3 +56,63 @@ PMS_Power_Down_Standby.o :	c:/Users/La/Desktop/TC375_Eval_board/SDCC_SCR_TC375_A
 c:/Users/La/Desktop/TC375_Eval_board/SDCC_SCR_TC375_Aurix/SDCC_SCR_TC375_Aurix/Libraries/Infra/Sfr/TC37A/_Reg/IfxPms_reg.h :
 PMS_Power_Down_Standby.o :	c:/Users/La/Desktop/TC375_Eval_board/SDCC_SCR_TC375_Aurix/SDCC_SCR_TC375_Aurix/Libraries/Infra/Sfr/TC37A/_Reg/IfxPms_regdef.h
 c:/Users/La/Desktop/TC375_Eval_board/SDCC_SCR_TC375_Aurix/SDCC_SCR_TC375_Aurix/Libraries/Infra/Sfr/TC37A/_Reg/IfxPms_regdef.h :
+PMS_Power_Down_Standby.o :	c:/Users/La/Desktop/TC375_Eval_board/SDCC_SCR_TC375_Aurix/SDCC_SCR_TC375_Aurix/Libraries/Service/CpuGeneric/SysSe/Bsp/Bsp.h
+c:/Users/La/Desktop/TC375_Eval_board/SDCC_SCR_TC375_Aurix/SDCC_SCR_TC375_Aurix/Libraries/Service/CpuGeneric/SysSe/Bsp/Bsp.h :
+PMS_Power_Down_Standby.o :	c:/Users/La/Desktop/TC375_Eval_board/SDCC_SCR_TC375_Aurix/SDCC_SCR_TC375_Aurix/Libraries/Service/CpuGeneric/_Utilities/Ifx_Assert.h
+c:/Users/La/Desktop/TC375_Eval_board/SDCC_SCR_TC375_Aurix/SDCC_SCR_TC375_Aurix/Libraries/Service/CpuGeneric/_Utilities/Ifx_Assert.h :
+PMS_Power_Down_Standby.o :	c:/Users/La/Desktop/TC375_Eval_board/SDCC_SCR_TC375_Aurix/SDCC_SCR_TC375_Aurix/Libraries/iLLD/TC37A/Tricore/Cpu/Std/IfxCpu.h
+c:/Users/La/Desktop/TC375_Eval_board/SDCC_SCR_TC375_Aurix/SDCC_SCR_TC375_Aurix/Libraries/iLLD/TC37A/Tricore/Cpu/Std/IfxCpu.h :
+PMS_Power_Down_Standby.o :	c:/Users/La/Desktop/TC375_Eval_board/SDCC_SCR_TC375_Aurix/SDCC_SCR_TC375_Aurix/Libraries/iLLD/TC37A/Tricore/_Impl/IfxCpu_cfg.h
+c:/Users/La/Desktop/TC375_Eval_board/SDCC_SCR_TC375_Aurix/SDCC_SCR_TC375_Aurix/Libraries/iLLD/TC37A/Tricore/_Impl/IfxCpu_cfg.h :
+PMS_Power_Down_Standby.o :	c:/Users/La/Desktop/TC375_Eval_board/SDCC_SCR_TC375_Aurix/SDCC_SCR_TC375_Aurix/Libraries/Infra/Sfr/TC37A/_Reg/IfxCpu_reg.h
+c:/Users/La/Desktop/TC375_Eval_board/SDCC_SCR_TC375_Aurix/SDCC_SCR_TC375_Aurix/Libraries/Infra/Sfr/TC37A/_Reg/IfxCpu_reg.h :
+PMS_Power_Down_Standby.o :	c:/Users/La/Desktop/TC375_Eval_board/SDCC_SCR_TC375_Aurix/SDCC_SCR_TC375_Aurix/Libraries/Infra/Sfr/TC37A/_Reg/IfxCpu_regdef.h
+c:/Users/La/Desktop/TC375_Eval_board/SDCC_SCR_TC375_Aurix/SDCC_SCR_TC375_Aurix/Libraries/Infra/Sfr/TC37A/_Reg/IfxCpu_regdef.h :
+PMS_Power_Down_Standby.o :	c:/Users/La/Desktop/TC375_Eval_board/SDCC_SCR_TC375_Aurix/SDCC_SCR_TC375_Aurix/Libraries/Infra/Sfr/TC37A/_Reg/IfxSrc_reg.h
+c:/Users/La/Desktop/TC375_Eval_board/SDCC_SCR_TC375_Aurix/SDCC_SCR_TC375_Aurix/Libraries/Infra/Sfr/TC37A/_Reg/IfxSrc_reg.h :
+PMS_Power_Down_Standby.o :	c:/Users/La/Desktop/TC375_Eval_board/SDCC_SCR_TC375_Aurix/SDCC_SCR_TC375_Aurix/Libraries/Infra/Sfr/TC37A/_Reg/IfxSrc_regdef.h
+c:/Users/La/Desktop/TC375_Eval_board/SDCC_SCR_TC375_Aurix/SDCC_SCR_TC375_Aurix/Libraries/Infra/Sfr/TC37A/_Reg/IfxSrc_regdef.h :
+PMS_Power_Down_Standby.o :	c:/Users/La/Desktop/TC375_Eval_board/SDCC_SCR_TC375_Aurix/SDCC_SCR_TC375_Aurix/Libraries/Infra/Sfr/TC37A/_Reg/IfxStm_reg.h
+c:/Users/La/Desktop/TC375_Eval_board/SDCC_SCR_TC375_Aurix/SDCC_SCR_TC375_Aurix/Libraries/Infra/Sfr/TC37A/_Reg/IfxStm_reg.h :
+PMS_Power_Down_Standby.o :	c:/Users/La/Desktop/TC375_Eval_board/SDCC_SCR_TC375_Aurix/SDCC_SCR_TC375_Aurix/Libraries/Infra/Sfr/TC37A/_Reg/IfxStm_regdef.h
+c:/Users/La/Desktop/TC375_Eval_board/SDCC_SCR_TC375_Aurix/SDCC_SCR_TC375_Aurix/Libraries/Infra/Sfr/TC37A/_Reg/IfxStm_regdef.h :
+PMS_Power_Down_Standby.o :	c:/Users/La/Desktop/TC375_Eval_board/SDCC_SCR_TC375_Aurix/SDCC_SCR_TC375_Aurix/Libraries/Service/CpuGeneric/_Utilities/Ifx_Assert.h
+c:/Users/La/Desktop/TC375_Eval_board/SDCC_SCR_TC375_Aurix/SDCC_SCR_TC375_Aurix/Libraries/Service/CpuGeneric/_Utilities/Ifx_Assert.h :
+PMS_Power_Down_Standby.o :	c:/Users/La/Desktop/TC375_Eval_board/SDCC_SCR_TC375_Aurix/SDCC_SCR_TC375_Aurix/Libraries/iLLD/TC37A/Tricore/Scu/Std/IfxScuWdt.h
+c:/Users/La/Desktop/TC375_Eval_board/SDCC_SCR_TC375_Aurix/SDCC_SCR_TC375_Aurix/Libraries/iLLD/TC37A/Tricore/Scu/Std/IfxScuWdt.h :
+PMS_Power_Down_Standby.o :	c:/Users/La/Desktop/TC375_Eval_board/SDCC_SCR_TC375_Aurix/SDCC_SCR_TC375_Aurix/Libraries/iLLD/TC37A/Tricore/Scu/Std/IfxScuCcu.h
+c:/Users/La/Desktop/TC375_Eval_board/SDCC_SCR_TC375_Aurix/SDCC_SCR_TC375_Aurix/Libraries/iLLD/TC37A/Tricore/Scu/Std/IfxScuCcu.h :
+PMS_Power_Down_Standby.o :	c:/Users/La/Desktop/TC375_Eval_board/SDCC_SCR_TC375_Aurix/SDCC_SCR_TC375_Aurix/Libraries/iLLD/TC37A/Tricore/Scu/Std/IfxScuWdt.h
+c:/Users/La/Desktop/TC375_Eval_board/SDCC_SCR_TC375_Aurix/SDCC_SCR_TC375_Aurix/Libraries/iLLD/TC37A/Tricore/Scu/Std/IfxScuWdt.h :
+PMS_Power_Down_Standby.o :	c:/Users/La/Desktop/TC375_Eval_board/SDCC_SCR_TC375_Aurix/SDCC_SCR_TC375_Aurix/Libraries/iLLD/TC37A/Tricore/Cpu/Std/IfxCpu.h
+c:/Users/La/Desktop/TC375_Eval_board/SDCC_SCR_TC375_Aurix/SDCC_SCR_TC375_Aurix/Libraries/iLLD/TC37A/Tricore/Cpu/Std/IfxCpu.h :
+PMS_Power_Down_Standby.o :	c:/Users/La/Desktop/TC375_Eval_board/SDCC_SCR_TC375_Aurix/SDCC_SCR_TC375_Aurix/Libraries/iLLD/TC37A/Tricore/_PinMap/IfxScu_PinMap.h
+c:/Users/La/Desktop/TC375_Eval_board/SDCC_SCR_TC375_Aurix/SDCC_SCR_TC375_Aurix/Libraries/iLLD/TC37A/Tricore/_PinMap/IfxScu_PinMap.h :
+PMS_Power_Down_Standby.o :	c:/Users/La/Desktop/TC375_Eval_board/SDCC_SCR_TC375_Aurix/SDCC_SCR_TC375_Aurix/Libraries/iLLD/TC37A/Tricore/Port/Std/IfxPort.h
+c:/Users/La/Desktop/TC375_Eval_board/SDCC_SCR_TC375_Aurix/SDCC_SCR_TC375_Aurix/Libraries/iLLD/TC37A/Tricore/Port/Std/IfxPort.h :
+PMS_Power_Down_Standby.o :	c:/Users/La/Desktop/TC375_Eval_board/SDCC_SCR_TC375_Aurix/SDCC_SCR_TC375_Aurix/Libraries/Infra/Sfr/TC37A/_Reg/IfxSmu_reg.h
+c:/Users/La/Desktop/TC375_Eval_board/SDCC_SCR_TC375_Aurix/SDCC_SCR_TC375_Aurix/Libraries/Infra/Sfr/TC37A/_Reg/IfxSmu_reg.h :
+PMS_Power_Down_Standby.o :	c:/Users/La/Desktop/TC375_Eval_board/SDCC_SCR_TC375_Aurix/SDCC_SCR_TC375_Aurix/Libraries/Infra/Sfr/TC37A/_Reg/IfxSmu_regdef.h
+c:/Users/La/Desktop/TC375_Eval_board/SDCC_SCR_TC375_Aurix/SDCC_SCR_TC375_Aurix/Libraries/Infra/Sfr/TC37A/_Reg/IfxSmu_regdef.h :
+PMS_Power_Down_Standby.o :	c:/Users/La/Desktop/TC375_Eval_board/SDCC_SCR_TC375_Aurix/SDCC_SCR_TC375_Aurix/Libraries/Infra/Sfr/TC37A/_Reg/IfxDmu_reg.h
+c:/Users/La/Desktop/TC375_Eval_board/SDCC_SCR_TC375_Aurix/SDCC_SCR_TC375_Aurix/Libraries/Infra/Sfr/TC37A/_Reg/IfxDmu_reg.h :
+PMS_Power_Down_Standby.o :	c:/Users/La/Desktop/TC375_Eval_board/SDCC_SCR_TC375_Aurix/SDCC_SCR_TC375_Aurix/Libraries/Infra/Sfr/TC37A/_Reg/IfxDmu_regdef.h
+c:/Users/La/Desktop/TC375_Eval_board/SDCC_SCR_TC375_Aurix/SDCC_SCR_TC375_Aurix/Libraries/Infra/Sfr/TC37A/_Reg/IfxDmu_regdef.h :
+PMS_Power_Down_Standby.o :	c:/Users/La/Desktop/TC375_Eval_board/SDCC_SCR_TC375_Aurix/SDCC_SCR_TC375_Aurix/Libraries/iLLD/TC37A/Tricore/Src/Std/IfxSrc.h
+c:/Users/La/Desktop/TC375_Eval_board/SDCC_SCR_TC375_Aurix/SDCC_SCR_TC375_Aurix/Libraries/iLLD/TC37A/Tricore/Src/Std/IfxSrc.h :
+PMS_Power_Down_Standby.o :	c:/Users/La/Desktop/TC375_Eval_board/SDCC_SCR_TC375_Aurix/SDCC_SCR_TC375_Aurix/Libraries/iLLD/TC37A/Tricore/_Impl/IfxSrc_cfg.h
+c:/Users/La/Desktop/TC375_Eval_board/SDCC_SCR_TC375_Aurix/SDCC_SCR_TC375_Aurix/Libraries/iLLD/TC37A/Tricore/_Impl/IfxSrc_cfg.h :
+PMS_Power_Down_Standby.o :	c:/Users/La/Desktop/TC375_Eval_board/SDCC_SCR_TC375_Aurix/SDCC_SCR_TC375_Aurix/Libraries/iLLD/TC37A/Tricore/Stm/Std/IfxStm.h
+c:/Users/La/Desktop/TC375_Eval_board/SDCC_SCR_TC375_Aurix/SDCC_SCR_TC375_Aurix/Libraries/iLLD/TC37A/Tricore/Stm/Std/IfxStm.h :
+PMS_Power_Down_Standby.o :	c:/Users/La/Desktop/TC375_Eval_board/SDCC_SCR_TC375_Aurix/SDCC_SCR_TC375_Aurix/Libraries/iLLD/TC37A/Tricore/_Impl/IfxStm_cfg.h
+c:/Users/La/Desktop/TC375_Eval_board/SDCC_SCR_TC375_Aurix/SDCC_SCR_TC375_Aurix/Libraries/iLLD/TC37A/Tricore/_Impl/IfxStm_cfg.h :
+PMS_Power_Down_Standby.o :	c:/Users/La/Desktop/TC375_Eval_board/SDCC_SCR_TC375_Aurix/SDCC_SCR_TC375_Aurix/Libraries/iLLD/TC37A/Tricore/Cpu/Std/Ifx_Types.h
+c:/Users/La/Desktop/TC375_Eval_board/SDCC_SCR_TC375_Aurix/SDCC_SCR_TC375_Aurix/Libraries/iLLD/TC37A/Tricore/Cpu/Std/Ifx_Types.h :
+PMS_Power_Down_Standby.o :	c:/Users/La/Desktop/TC375_Eval_board/SDCC_SCR_TC375_Aurix/SDCC_SCR_TC375_Aurix/Libraries/iLLD/TC37A/Tricore/Scu/Std/IfxScuCcu.h
+c:/Users/La/Desktop/TC375_Eval_board/SDCC_SCR_TC375_Aurix/SDCC_SCR_TC375_Aurix/Libraries/iLLD/TC37A/Tricore/Scu/Std/IfxScuCcu.h :
+PMS_Power_Down_Standby.o :	c:/Users/La/Desktop/TC375_Eval_board/SDCC_SCR_TC375_Aurix/SDCC_SCR_TC375_Aurix/Libraries/Infra/Sfr/TC37A/_Reg/IfxCbs_reg.h
+c:/Users/La/Desktop/TC375_Eval_board/SDCC_SCR_TC375_Aurix/SDCC_SCR_TC375_Aurix/Libraries/Infra/Sfr/TC37A/_Reg/IfxCbs_reg.h :
+PMS_Power_Down_Standby.o :	c:/Users/La/Desktop/TC375_Eval_board/SDCC_SCR_TC375_Aurix/SDCC_SCR_TC375_Aurix/Libraries/Infra/Sfr/TC37A/_Reg/IfxCbs_regdef.h
+c:/Users/La/Desktop/TC375_Eval_board/SDCC_SCR_TC375_Aurix/SDCC_SCR_TC375_Aurix/Libraries/Infra/Sfr/TC37A/_Reg/IfxCbs_regdef.h :
+PMS_Power_Down_Standby.o :	c:/Users/La/Desktop/TC375_Eval_board/SDCC_SCR_TC375_Aurix/SDCC_SCR_TC375_Aurix/Libraries/iLLD/TC37A/Tricore/Scu/Std/IfxScuCcu.h
+c:/Users/La/Desktop/TC375_Eval_board/SDCC_SCR_TC375_Aurix/SDCC_SCR_TC375_Aurix/Libraries/iLLD/TC37A/Tricore/Scu/Std/IfxScuCcu.h :

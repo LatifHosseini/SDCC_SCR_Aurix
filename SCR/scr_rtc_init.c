@@ -1,5 +1,5 @@
 /**********************************************************************************************************************
- * \file rtc_init.c
+ * \file scr_rtc_init.c
  * \copyright Copyright (C) Infineon Technologies AG 2019
  * 
  * Use of this file is subject to the terms of use agreed between (i) you or the company in which ordinary course of 
@@ -53,19 +53,9 @@
 void scr_rtcInit(void){
 
 
-/* RTC module configurations*/
-    //1s@100Mhz/DIV, we use high speed because 70khz has 30% variation
-    SCR_RTC_CR0 = 0xFF;
-    SCR_RTC_CR1 = 0xFF;
-    SCR_RTC_CR2 = 0xFF;
-    SCR_RTC_CR3 = 0x01;
-//   RMAP: 0, PAGE: X
-    SCR_RTC_CON =  0x17;        // RTC Interrupt Enable, RTC start operation, RTC 100MHz/DIV -> 20MHz 9-bit prescaler is bypassed
+
+
+
+
 
 }
-
-
-
-
-
-

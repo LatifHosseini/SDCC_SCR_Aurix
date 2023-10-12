@@ -2,7 +2,7 @@
 ; File Created by SDCC : free open source ISO C Compiler 
 ; Version 4.2.2 #13448 (MINGW32)
 ;--------------------------------------------------------
-	.file	"scr_adc.c"
+	.file	"scr_adc_init.c"
 ;	.optsdcc -mmcs51
 	; --model-large
 
@@ -208,7 +208,7 @@ _SCR_ADCOMP_CON	=	0x00fb
 ; uninitialized external ram data
 ;--------------------------------------------------------
 	.section .xdata.i51,"aw" ;xdata_name ;area
-_scr_adc_getResult_result_65536_37:
+_scr_adc_getResult_result_65536_40:
 	.ds.b	2
 ;--------------------------------------------------------
 ; code
@@ -216,7 +216,7 @@ _scr_adc_getResult_result_65536_37:
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'scr_adc_init'
 ;------------------------------------------------------------
-;	../SCR/scr_adc.c:53: void scr_adc_init(void){
+;	../SCR/scr_adc_init.c:53: void scr_adc_init(void){
 ;	-----------------------------------------
 ;	 function scr_adc_init
 ;	-----------------------------------------
@@ -224,13 +224,13 @@ _scr_adc_getResult_result_65536_37:
 	.type   scr_adc_init, @function
 _scr_adc_init:
 	.using 0
-;	../SCR/scr_adc.c:59: }
+;	../SCR/scr_adc_init.c:59: }
 .00101:
 	ret
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'scr_adc_enable_modul'
 ;------------------------------------------------------------
-;	../SCR/scr_adc.c:61: void scr_adc_enable_modul(void){
+;	../SCR/scr_adc_init.c:61: void scr_adc_enable_modul(void){
 ;	-----------------------------------------
 ;	 function scr_adc_enable_modul
 ;	-----------------------------------------
@@ -238,13 +238,13 @@ _scr_adc_init:
 	.type   scr_adc_enable_modul, @function
 _scr_adc_enable_modul:
 	.using 0
-;	../SCR/scr_adc.c:64: }
+;	../SCR/scr_adc_init.c:64: }
 .00103:
 	ret
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'scr_adc_disable_modu'
 ;------------------------------------------------------------
-;	../SCR/scr_adc.c:65: void scr_adc_disable_modu(void){
+;	../SCR/scr_adc_init.c:65: void scr_adc_disable_modu(void){
 ;	-----------------------------------------
 ;	 function scr_adc_disable_modu
 ;	-----------------------------------------
@@ -252,13 +252,13 @@ _scr_adc_enable_modul:
 	.type   scr_adc_disable_modu, @function
 _scr_adc_disable_modu:
 	.using 0
-;	../SCR/scr_adc.c:67: }
+;	../SCR/scr_adc_init.c:67: }
 .00105:
 	ret
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'scr_isAdc_enabled'
 ;------------------------------------------------------------
-;	../SCR/scr_adc.c:69: void scr_isAdc_enabled(void){
+;	../SCR/scr_adc_init.c:69: void scr_isAdc_enabled(void){
 ;	-----------------------------------------
 ;	 function scr_isAdc_enabled
 ;	-----------------------------------------
@@ -266,13 +266,13 @@ _scr_adc_disable_modu:
 	.type   scr_isAdc_enabled, @function
 _scr_isAdc_enabled:
 	.using 0
-;	../SCR/scr_adc.c:71: }
+;	../SCR/scr_adc_init.c:71: }
 .00107:
 	ret
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'scr_adc_isReadyForNewConversion'
 ;------------------------------------------------------------
-;	../SCR/scr_adc.c:73: void scr_adc_isReadyForNewConversion(void){
+;	../SCR/scr_adc_init.c:73: void scr_adc_isReadyForNewConversion(void){
 ;	-----------------------------------------
 ;	 function scr_adc_isReadyForNewConversion
 ;	-----------------------------------------
@@ -280,13 +280,13 @@ _scr_isAdc_enabled:
 	.type   scr_adc_isReadyForNewConversion, @function
 _scr_adc_isReadyForNewConversion:
 	.using 0
-;	../SCR/scr_adc.c:76: }
+;	../SCR/scr_adc_init.c:76: }
 .00109:
 	ret
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'scr_adc_selectChannel'
 ;------------------------------------------------------------
-;	../SCR/scr_adc.c:77: void scr_adc_selectChannel(void){
+;	../SCR/scr_adc_init.c:77: void scr_adc_selectChannel(void){
 ;	-----------------------------------------
 ;	 function scr_adc_selectChannel
 ;	-----------------------------------------
@@ -294,13 +294,13 @@ _scr_adc_isReadyForNewConversion:
 	.type   scr_adc_selectChannel, @function
 _scr_adc_selectChannel:
 	.using 0
-;	../SCR/scr_adc.c:79: }
+;	../SCR/scr_adc_init.c:79: }
 .00111:
 	ret
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'scr_adc_selectSampleTime'
 ;------------------------------------------------------------
-;	../SCR/scr_adc.c:81: void scr_adc_selectSampleTime(void){
+;	../SCR/scr_adc_init.c:81: void scr_adc_selectSampleTime(void){
 ;	-----------------------------------------
 ;	 function scr_adc_selectSampleTime
 ;	-----------------------------------------
@@ -308,13 +308,13 @@ _scr_adc_selectChannel:
 	.type   scr_adc_selectSampleTime, @function
 _scr_adc_selectSampleTime:
 	.using 0
-;	../SCR/scr_adc.c:83: }
+;	../SCR/scr_adc_init.c:83: }
 .00113:
 	ret
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'scr_adc_startConversion'
 ;------------------------------------------------------------
-;	../SCR/scr_adc.c:85: void scr_adc_startConversion(void){
+;	../SCR/scr_adc_init.c:85: void scr_adc_startConversion(void){
 ;	-----------------------------------------
 ;	 function scr_adc_startConversion
 ;	-----------------------------------------
@@ -322,15 +322,15 @@ _scr_adc_selectSampleTime:
 	.type   scr_adc_startConversion, @function
 _scr_adc_startConversion:
 	.using 0
-;	../SCR/scr_adc.c:87: }
+;	../SCR/scr_adc_init.c:87: }
 .00115:
 	ret
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'scr_adc_getResult'
 ;------------------------------------------------------------
-;result                    Allocated with name '_scr_adc_getResult_result_65536_37'
+;result                    Allocated with name '_scr_adc_getResult_result_65536_40'
 ;------------------------------------------------------------
-;	../SCR/scr_adc.c:89: unsigned int scr_adc_getResult(void){
+;	../SCR/scr_adc_init.c:89: unsigned int scr_adc_getResult(void){
 ;	-----------------------------------------
 ;	 function scr_adc_getResult
 ;	-----------------------------------------
@@ -338,13 +338,13 @@ _scr_adc_startConversion:
 	.type   scr_adc_getResult, @function
 _scr_adc_getResult:
 	.using 0
-;	../SCR/scr_adc.c:92: return result;
-	mov	dptr,#_scr_adc_getResult_result_65536_37
+;	../SCR/scr_adc_init.c:92: return result;
+	mov	dptr,#_scr_adc_getResult_result_65536_40
 	movx	a,@dptr
 	mov	r6,a
 	inc	dptr
 	movx	a,@dptr
-;	../SCR/scr_adc.c:93: }
+;	../SCR/scr_adc_init.c:93: }
 	mov	dpl,r6
 	mov	dph,a
 .00117:

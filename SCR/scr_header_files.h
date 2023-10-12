@@ -52,6 +52,7 @@
 /*------------------------------------------------Function Prototypes------------------------------------------------*/
 /*********************************************************************************************************************/
 void scr_rtcInit(void);
+
 void scr_adc_init(void);
 void scr_adc_init(void);
 void scr_adc_enable_modul(void);
@@ -63,7 +64,9 @@ void scr_adc_selectSampleTime(void);
 void scr_adc_startConversion(void);
 unsigned int scr_adc_getResult(void);
 
+void gpio_init(void);
 
-
+void TrigerWakeUpFromStandbyMode(void);
+unsigned char IsStandbyMode(void);
 
 #endif /* SCR_HEADER_FILES_H_ */
