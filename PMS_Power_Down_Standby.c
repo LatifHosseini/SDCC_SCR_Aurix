@@ -38,10 +38,12 @@
 /*------------------------------------------------------Macros-------------------------------------------------------*/
 /*********************************************************************************************************************/
 #define LED         &MODULE_P10,2                                           /* LED: Port, Pin definition            */
+#define INPUT         &MODULE_P10,5                                           /* Input: Port, Pin definition            */
 #define WAIT_TIME   500       /* Wait time constant in milliseconds   */
 
 #define LED_D110                            &MODULE_P13,3   /* LED that signals the start of the application        */
 #define LED_D107                            &MODULE_P13,0   /* LED that signals the entering in Standby mode        */
+
 #define TICKS_TO_WAIT                       0x8000000       /* Total amount of ticks in approximately one second    */
 #define MASK_BIT2_TO_8_ONES                 0x1FC           /* Mask to clear all Standby and Wake-up flags          */
 #define WAKEUP_PINA_ENABLE                  0x1
@@ -57,6 +59,8 @@
 #define DO_NOT_TRIGGER_ON_ANY_EDGE          0x0
 
 #define STANDBY_RAM_IS_SUPPLIED             0x2             /* Standby RAM (CPU0 dLMU RAM) is supplied.*/
+
+volatile unsigned int pin_status;
 
 
 /*********************************************************************************************************************/
@@ -130,6 +134,17 @@ void blinkLED(void)
     IfxPort_togglePin(LED);                                                     /* Toggle the state of the LED      */
     waitTime(IfxStm_getTicksFromMilliseconds(BSP_DEFAULT_TIMER, WAIT_TIME));    /* Wait 500 milliseconds            */
 }
+/* This function initializes the port pin as input pull down*/
+void init_input_Pin(void)
+{
+    IfxPort_setPinModeInput(INPUT, IfxPort_InputMode_pullDown);
+}
+int get_pin_status(void)
+{
+    pin_status=  IfxPort_getPinState(INPUT);
 
+    return pin_status;
+
+}
 
 

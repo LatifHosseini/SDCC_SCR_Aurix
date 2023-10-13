@@ -254,10 +254,6 @@ _gpio_init:
 	mov	_SCR_EXICON1,#0xF4
 ;	../SCR/scr_gpio_init.c:84: SCR_SCU_PAGE = 0;
 	mov	_SCR_SCU_PAGE,#0x00
-;	../SCR/scr_gpio_init.c:87: SCR_IEN1 |= (1 << 2);    //enabled Interrupt Node 8
-	orl	_SCR_IEN1,#0x04
-;	../SCR/scr_gpio_init.c:88: SCR_IEN1 |= (1 << 3);    //enabled Interrupt Node 9
-	orl	_SCR_IEN1,#0x08
 .00101:
 ;	../SCR/scr_gpio_init.c:90: }
 	ret

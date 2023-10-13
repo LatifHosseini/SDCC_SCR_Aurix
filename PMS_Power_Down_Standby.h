@@ -38,4 +38,7 @@ void stepIntoStandbyMode(void);
 void initLED(void);
 void blinkLED(void);
 
+void init_input_Pin(void);
+int get_pin_status(void);
+
 #endif /* PMS_POWER_DOWN_STANDBY_H_ */

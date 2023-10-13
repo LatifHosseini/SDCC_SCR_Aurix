@@ -50,9 +50,6 @@ Discarded input sections
  .data          0x00000000        0x0 ./SCR/main.o
  .bss           0x00000000        0x0 ./SCR/main.o
  .bdata.i51     0x00000000        0x0 ./SCR/main.o
- .xdata.i51     0x00000000        0x2 ./SCR/main.o
- .text.code.delay
-                0x00000000       0x22 ./SCR/main.o
  .text          0x00000000        0x0 ./SCR/scr_adc_init.o
  .data          0x00000000        0x0 ./SCR/scr_adc_init.o
  .bss           0x00000000        0x0 ./SCR/scr_adc_init.o
@@ -93,23 +90,20 @@ Discarded input sections
  .data          0x00000000        0x0 ./SCR/wakeup_tricore.o
  .bss           0x00000000        0x0 ./SCR/wakeup_tricore.o
  .bdata.i51     0x00000000        0x0 ./SCR/wakeup_tricore.o
- .bitdata.i51   0x00000000        0x1 ./SCR/wakeup_tricore.o
  .text.code.TrigerWakeUpFromStandbyMode
                 0x00000000        0x7 ./SCR/wakeup_tricore.o
- .text.code.IsStandbyMode
-                0x00000000       0x14 ./SCR/wakeup_tricore.o
 
 Memory Configuration
 
 Name             Origin             Length             Used               Free               Attributes
-text             0x00000000         0x00001c00         0x000002c3         0x0000193d         xr
-bit              0x00000000         0x00000080         0x00000000         0x00000080         rw !x
+text             0x00000000         0x00001c00         0x0000025d         0x000019a3         xr
+bit              0x00000000         0x00000080         0x00000001         0x0000007f         rw !x
 data             0x00000000         0x00000100         0x00000008         0x000000f8         rw !x
 pdata            0x00000000         0x00000100         0x00000000         0x00000100         rw !x
-xdata            0x00001c00         0x00000400         0x00000106         0x000002fa         rw !x
+xdata            0x00001c00         0x00000400         0x00000108         0x000002f8         rw !x
 edata            0x00000000         0x00000000         0x00000000         0x00000000         rw !x
 eeprom           0x00000000         0x00000000         0x00000000         0x00000000         rw !x
-*default*        0x00000000         0xffffffff         0x00001d06         0xffffe2f9
+*default*        0x00000000         0xffffffff         0x00001d08         0xffffe2f7
 
 Linker script and memory map
 
@@ -271,7 +265,7 @@ Linker script and memory map
                 0x00000101        0x2 SHORT 0x100 ADDR (.gsinit)
 
 .text           memory region -> text
-                0x00000103      0x1ba
+                0x00000103      0x154
  *(.init)
  *(.text.gsinit0)
  .text.gsinit0  0x00000103        0x6 C:\Infineon\AURIX-Studio-1.9.12\tools\Compilers\sdcc_421/share/sdcc/lib/large\libmcs51.a(crtstart.rel)
@@ -302,33 +296,39 @@ Linker script and memory map
                 0x00000179        0x4 C:\Infineon\AURIX-Studio-1.9.12\tools\Compilers\sdcc_421/share/sdcc/lib/large\libsdcc.a(_startup.rel)
                 0x00000179                __sdcc_external_startup
  .text.code.main
-                0x0000017d       0x1b ./SCR/main.o
+                0x0000017d       0x49 ./SCR/main.o
                 0x0000017d                _main
+ .text.code.delay
+                0x000001c6       0x22 ./SCR/main.o
+                0x000001c6                _delay
  .text.code.rtc_interrupt
-                0x00000198        0x4 ./SCR/main.o
-                0x00000198                _rtc_interrupt
+                0x000001e8        0x4 ./SCR/main.o
+                0x000001e8                _rtc_interrupt
  .text.code.EXINT2IS_interrupt
-                0x0000019c       0x4a ./SCR/main.o
-                0x0000019c                _EXINT2IS_interrupt
+                0x000001ec        0xa ./SCR/main.o
+                0x000001ec                _EXINT2IS_interrupt
  .text.code.EXINT5IS_interrupt
-                0x000001e6       0x8e ./SCR/main.o
-                0x000001e6                _EXINT5IS_interrupt
+                0x000001f6        0xa ./SCR/main.o
+                0x000001f6                _EXINT5IS_interrupt
  .text.code.gpio_init
-                0x00000274       0x49 ./SCR/scr_gpio_init.o
-                0x00000274                _gpio_init
+                0x00000200       0x43 ./SCR/scr_gpio_init.o
+                0x00000200                _gpio_init
+ .text.code.IsStandbyMode
+                0x00000243       0x14 ./SCR/wakeup_tricore.o
+                0x00000243                _IsStandbyMode
  *(.fini)
-                0x000002bd                _etext = .
+                0x00000257                _etext = .
 
 .roxdata        memory region -> text
-                0x000002bd        0x6
-                0x000002bd                __roxdata_start = .
+                0x00000257        0x6
+                0x00000257                __roxdata_start = .
  *(.roxdata.*)
- .roxdata.init  0x000002bd        0x6 ./SCR/main.o
-                0x000002c3                __roxdata_end = .
+ .roxdata.init  0x00000257        0x6 ./SCR/main.o
+                0x0000025d                __roxdata_end = .
                 0x00000008                regsize = DEFINED (__RB3__)?0x20:DEFINED (__RB2__)?0x18:DEFINED (__RB1__)?0x10:0x8
 
 .reg            memory region -> data
-                0x00000000        0x8 load address 0x000002bd
+                0x00000000        0x8 load address 0x00000257
                 0x00000000                PROVIDE (__reg_start, .)
  *(.regbank)
                 0x00000008                . = regsize
@@ -346,37 +346,38 @@ Linker script and memory map
  *(.dbit*)
 
 .bit            memory region -> bit
-                0x00000000        0x0
+                0x00000000        0x1
                 0x00000000                PROVIDE (__bit_start, .)
  *(.bitdata*)
-                0x00000000                PROVIDE (__bit_end, .)
+ .bitdata.i51   0x00000000        0x1 ./SCR/wakeup_tricore.o
+                0x00000001                PROVIDE (__bit_end, .)
 
 .ddata          memory region -> data
-                0x00000008        0x0
-                0x00000008                PROVIDE (__ddata_start, .)
+                0x00000021        0x0
+                0x00000021                PROVIDE (__ddata_start, .)
  *(.ddata*)
  *(.gnu.linkonce.d*)
-                0x00000008                __ddata_end = .
+                0x00000021                __ddata_end = .
 
 .bss            memory region -> data
-                0x00000008        0x0
-                0x00000008                PROVIDE (__bss_start, .)
+                0x00000021        0x0
+                0x00000021                PROVIDE (__bss_start, .)
  *(.bss*)
  *(COMMON)
-                0x00000008                PROVIDE (__bss_end, .)
+                0x00000021                PROVIDE (__bss_end, .)
 
 .idata          memory region -> data
-                0x00000008        0x0
-                0x00000008                PROVIDE (__idata_start, .)
+                0x00000021        0x0
+                0x00000021                PROVIDE (__idata_start, .)
  *(.idata*)
-                0x00000008                PROVIDE (__idata_end, .)
+                0x00000021                PROVIDE (__idata_end, .)
 
 .ibss           memory region -> data
-                0x00000008        0x0
-                0x00000008                PROVIDE (__ibss_start, .)
+                0x00000021        0x0
+                0x00000021                PROVIDE (__ibss_start, .)
  *(.ibss*)
-                0x00000008                PROVIDE (__ibss_end, .)
-                0x00000008                PROVIDE (__stack_start, .)
+                0x00000021                PROVIDE (__ibss_end, .)
+                0x00000021                PROVIDE (__stack_start, .)
 
 .pdata          memory region -> xdata
                 0x00001c01        0x0
@@ -386,24 +387,26 @@ Linker script and memory map
                 0x00001c01                PROVIDE (__xstack_start, .)
 
 .xdata          memory region -> xdata
-                0x00001d00        0x6
+                0x00001d00        0x8
                 0x00001d00                __xdatac_start = .
  *(.xdata.i51*)
+ .xdata.i51     0x00001d00        0x2 ./SCR/main.o
+                0x00001d00                _retunr_value
  *(.xdata.abs*)
-                0x00001d00                __xdatac_end = .
-                0x00001d00                __xdatai_start = .
+                0x00001d02                __xdatac_end = .
+                0x00001d02                __xdatai_start = .
  *(.xdata.init*)
- .xdata.init    0x00001d00        0x6 ./SCR/main.o
-                0x00001d00                _FellingEdge
-                0x00001d02                _RissingEdge
-                0x00001d04                _CaptureFlag
-                0x00001d06                __xdatai_end = .
+ .xdata.init    0x00001d02        0x6 ./SCR/main.o
+                0x00001d02                _FellingEdge
+                0x00001d04                _RissingEdge
+                0x00001d06                _CaptureFlag
+                0x00001d08                __xdatai_end = .
 
 .ixdata         memory region -> xdata
-                0x00001d06        0x0
-                0x00001d06                PROVIDE (__ixdata_start, .)
+                0x00001d08        0x0
+                0x00001d08                PROVIDE (__ixdata_start, .)
  *(.xbss*)
-                0x00001d06                PROVIDE (__ixdata_end, .)
+                0x00001d08                PROVIDE (__ixdata_end, .)
 
 .edata          memory region -> edata
                 0x00000000        0x0
@@ -413,10 +416,10 @@ Linker script and memory map
                 0x00001c01                s_PSEG = __pdata_start
                 0x00000000                l_PSEG = (__pdata_end - __pdata_start)
                 0x00001d00                s_XSEG = __xdatac_start
-                0x00000000                l_XSEG = (__xdatac_end - __xdatac_start)
-                0x00001d00                s_XISEG = __xdatai_start
+                0x00000002                l_XSEG = (__xdatac_end - __xdatac_start)
+                0x00001d02                s_XISEG = __xdatai_start
                 0x00000006                l_XISEG = (__xdatai_end - __xdatai_start)
-                0x000002bd                s_XINIT = __roxdata_start
+                0x00000257                s_XINIT = __roxdata_start
                 0x00000006                l_XINIT = (__roxdata_end - __roxdata_start)
                 0x00000001                _. = ASSERT ((__stack_start < 0xf0), Stack Iram above limit 0xF0)
                 0x00000001                _. = ASSERT ((__ddata_end < 0x80), Direct Iram Data above Limit 0x80)

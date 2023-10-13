@@ -32,7 +32,8 @@
 #include "SCR.h"
 
 volatile unsigned int var_1 = 1;
-volatile unsigned int var_2 = 2;
+volatile unsigned int pin_status_1;
+
 
 IFX_ALIGN(4) IfxCpu_syncEvent g_cpuSyncEvent = 0;
 
@@ -78,8 +79,14 @@ void core0_main(void)
          //   initLEDs();
          //   runStandby();
         initLED();  /* Initialize the LED port pin      */
+        init_input_Pin();/* Initialize the pin 5 of Port 10 as input pull-down     */
     while(1)
     {
-        blinkLED(); /* Make the LED blink           */
+        pin_status_1 = get_pin_status();
+        if(pin_status_1 == 1){
+
+            runStandby();
+        }
+        blinkLED(); /* Make the LED blink */
     }
 }

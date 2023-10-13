@@ -84,8 +84,8 @@ void gpio_init(void){
        SCR_SCU_PAGE = 0;
 
    //PAGE: X  Bit 2 and 3
-       SCR_IEN1 |= (1 << 2);    //enabled Interrupt Node 8
-       SCR_IEN1 |= (1 << 3);    //enabled Interrupt Node 9
+     //  SCR_IEN1 |= (1 << 2);    //enabled Interrupt Node 8
+     //  SCR_IEN1 |= (1 << 3);    //enabled Interrupt Node 9
 
 }
 

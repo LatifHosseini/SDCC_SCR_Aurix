@@ -31,7 +31,7 @@
 volatile unsigned int FellingEdge = 0;
 volatile unsigned int RissingEdge = 0;
 volatile unsigned int CaptureFlag = 0;
-volatile unsigned int var_1;
+volatile unsigned int retunr_value;
 
 
 
@@ -63,9 +63,14 @@ void main()
 
 	while(1){
 
-
-
-
+	    SCR_P00_OUT |= (1 << 5) ; // Set bit 5
+	    delay();
+	     SCR_P00_OUT &= ~(1 << 5) ; // Clear bit 5
+	      delay();
+	      retunr_value = IsStandbyMode();
+	      if(retunr_value == 1){
+	          SCR_P00_OUT |= (1 << 4) ;
+	      }
 
 	     }
 
@@ -108,6 +113,7 @@ void rtc_interrupt(void) __interrupt (13){
 
 /*  ISR Node 8*/
 void EXINT2IS_interrupt(void) __interrupt (8){
+   /*
     if(FellingEdge == 1){
         SCR_IO_PAGE = 0;
         SCR_P00_OUT |= (1 << 4) ; // Set bit 5
@@ -115,7 +121,7 @@ void EXINT2IS_interrupt(void) __interrupt (8){
         SCR_P00_OUT &= ~(1 << 5) ; // Clear bit 5
         FellingEdge = 0;
     }
-
+            */
 
     SCR_SCU_PAGE = 0;
     SCR_IRCON2 &= ~(1 << 0) ; // Clear Bit 2
@@ -127,6 +133,7 @@ void EXINT2IS_interrupt(void) __interrupt (8){
 ************************************************************************************************************ */
 /* ISR Node 9*/
 void EXINT5IS_interrupt(void) __interrupt (9){
+   /*
     RissingEdge++ ;
     if(RissingEdge == 1){
         FellingEdge++;
@@ -144,7 +151,7 @@ void EXINT5IS_interrupt(void) __interrupt (9){
         RissingEdge = 0;
 
     }
-
+                        */
     SCR_SCU_PAGE = 0;
     SCR_IRCON2 &= ~(1 << 1) ; // Clear Bit 2
     SCR_SCU_PAGE = 1;
