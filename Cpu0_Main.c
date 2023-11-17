@@ -1,4 +1,4 @@
-/**********************************************************************************************************************
+ /**********************************************************************************************************************
  * \file Cpu0_Main.c
  * \copyright Copyright (C) Infineon Technologies AG 2019
  * 
@@ -24,16 +24,18 @@
  * CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS 
  * IN THE SOFTWARE.
  *********************************************************************************************************************/
-#include "PMS_Power_Down_Standby.h"
-#include "IfxPms_reg.h"
 #include "Ifx_Types.h"
 #include "IfxCpu.h"
 #include "IfxScuWdt.h"
 #include "SCR.h"
+#include "Ifx_Types.h"
+#include "PMS_Power_Down_Standby.h"
+#include "IfxPms_reg.h"
 
-volatile unsigned int var_1 = 1;
-volatile unsigned int pin_status_1;
+//Memory address, you want to access
+#define RW_FLAG     0x1FFF7800
 
+volatile unsigned int Push_Button_status_1;
 
 IFX_ALIGN(4) IfxCpu_syncEvent g_cpuSyncEvent = 0;
 
@@ -41,6 +43,21 @@ void core0_main(void)
 {
     IfxCpu_enableInterrupts();
     
+
+
+    //Pointer to access the Memory address
+    volatile uint32 *flagAddress = NULL;
+    //variable to stored the read value
+    uint32 ReadData = 0;
+    //Assign addres to the pointer
+    flagAddress = (volatile uint32 *)RW_FLAG;
+    //Write value to the memory
+    * flagAddress = 12; // Write
+    //Read value from memory
+    ReadData = * flagAddress;
+
+
+
 
     /* !!WATCHDOG0 AND SAFETY WATCHDOG ARE DISABLED HERE!!
      * Enable the watchdogs and service them periodically if it is required
@@ -54,39 +71,39 @@ void core0_main(void)
     
     IfxScuWdt_clearSafetyEndinit(IfxScuWdt_getCpuWatchdogPassword());
 
-    //boot_mode=0 - XRAM not programmed
+    /* boot_mode = 0 - XRAM not programmed */
     IfxScr_init(0);
     IfxScuWdt_setSafetyEndinit(IfxScuWdt_getCpuWatchdogPassword());
 
-    // Write SCR program to XRAM
+    /* Write SCR program to XRAM */
     IfxScr_copyProgram();
 
     IfxScuWdt_clearSafetyEndinit(IfxScuWdt_getCpuWatchdogPassword());
 
-    //boot_mode=1 - XRAM programmed
+    /* boot_mode = 1 - XRAM programmed */
     IfxScr_init(1);
     IfxScuWdt_setSafetyEndinit(IfxScuWdt_getCpuWatchdogPassword());
     
     IfxScuWdt_clearSafetyEndinit(IfxScuWdt_getCpuWatchdogPassword());
-        while (P33_PCSR.B.LCK);
-         P33_PCSR.U = 0xFEFF;
-        while (P34_PCSR.B.LCK);
-        P34_PCSR.U = 0x0002;
-        IfxScuWdt_setSafetyEndinit(IfxScuWdt_getCpuWatchdogPassword());
+    while (P33_PCSR.B.LCK);
+    P33_PCSR.U = 0xFEFF;
+    while (P34_PCSR.B.LCK);
+    P34_PCSR.U = 0x0002;
+    IfxScuWdt_setSafetyEndinit(IfxScuWdt_getCpuWatchdogPassword());
 
-        SCU_PMSWCR1.B.STBYEV = 1;
-        /* Configure the LEDs and put the system into Standby after a few seconds */
-         //   initLEDs();
-         //   runStandby();
-        initLED();  /* Initialize the LED port pin      */
-        init_input_Pin();/* Initialize the pin 5 of Port 10 as input pull-down     */
+    initLED_1();  /* Initialize the LED port pin      */
+    initLED_2();
+    init_input_Pin();/* Initialize the pin 5 of Port 10 as input pull-down     */
+
     while(1)
     {
-        pin_status_1 = get_pin_status();
-        if(pin_status_1 == 1){
+        Push_Button_status_1 = get_Push_Button_status();
+                if(Push_Button_status_1 == 0){
+                    setLED2High();
+                    runStandby();
+                }
+                else { setLED2Low();  }
 
-            runStandby();
-        }
-        blinkLED(); /* Make the LED blink */
+        blinkLED_1(); /* Make the LED blink */
     }
 }
